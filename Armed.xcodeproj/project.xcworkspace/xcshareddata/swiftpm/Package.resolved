@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Defaults",
+        "repositoryURL": "https://github.com/sindresorhus/Defaults.git",
+        "state": {
+          "branch": "main",
+          "revision": "488ff7dd719cf18a347dcab00078483f28ee52f8",
+          "version": null
+        }
+      },
+      {
+        "package": "MenuBarExtraAccess",
+        "repositoryURL": "https://github.com/orchetect/MenuBarExtraAccess",
+        "state": {
+          "branch": null,
+          "revision": "24c86e4de6664aefb8b29b47fd664cf833c49ad2",
+          "version": "1.0.3"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
