@@ -8,16 +8,14 @@
 import Defaults
 import SwiftUI
 struct ControlCenterButton: View {
-    typealias Action = () -> Void
-
     let value: Bool
     let title: String
     let icon: String
     let tint: Color
     let size: Font
-    var action: Action = {}
+    var action: () -> Void
 
-    init(_ value: Bool, title: String, icon: String, tint: Color = .blue, size: Font = .caption, action: @escaping Action) {
+    init(_ value: Bool, title: String, icon: String, tint: Color = .blue, size: Font = .caption, action: @escaping () -> Void) {
         self.value = value
         self.title = title
         self.icon = icon

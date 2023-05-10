@@ -13,8 +13,9 @@
 		4522AA8329E856550056D6BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4522AA8229E856550056D6BA /* Preview Assets.xcassets */; };
 		4522AA8C29E856C20056D6BA /* ArmedVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522AA8B29E856C20056D6BA /* ArmedVM.swift */; };
 		4522AA8F29E8576E0056D6BA /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4522AA8E29E8576E0056D6BA /* IOKit.framework */; };
-		4522AA9129E861A60056D6BA /* WarnTheifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522AA9029E861A60056D6BA /* WarnTheifView.swift */; };
+		4522AA9129E861A60056D6BA /* WarnTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522AA9029E861A60056D6BA /* WarnTimerView.swift */; };
 		4522AA9329E862410056D6BA /* CameraVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522AA9229E862410056D6BA /* CameraVM.swift */; };
+		4526F9B02A0B176A00CD2913 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526F9AF2A0B176A00CD2913 /* Double+Extension.swift */; };
 		454032B629FF7F1F00C8C08C /* Armed_watchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454032B529FF7F1F00C8C08C /* Armed_watchOSApp.swift */; };
 		454032B829FF7F1F00C8C08C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454032B729FF7F1F00C8C08C /* ContentView.swift */; };
 		454032BA29FF7F1F00C8C08C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 454032B929FF7F1F00C8C08C /* Assets.xcassets */; };
@@ -51,7 +52,7 @@
 		454B2D5129EF40DA00F8E1BA /* Audio+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2D5029EF40DA00F8E1BA /* Audio+Extension.swift */; };
 		456255842A006A930042A3CF /* InformationKit in Frameworks */ = {isa = PBXBuildFile; productRef = 456255832A006A930042A3CF /* InformationKit */; };
 		4569146729F338D700309A2E /* CCBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146629F338D700309A2E /* CCBackgroundModifier.swift */; };
-		4569146929F346C300309A2E /* SirenSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146829F346C300309A2E /* SirenSlider.swift */; };
+		4569146929F346C300309A2E /* CustomSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146829F346C300309A2E /* CustomSliders.swift */; };
 		4569146B29F346F200309A2E /* ControlCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146A29F346F200309A2E /* ControlCenterButton.swift */; };
 		4569146D29F348B800309A2E /* SirenSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146C29F348B800309A2E /* SirenSettingsView.swift */; };
 		4569146F29F3494A00309A2E /* AppStorage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146E29F3494A00309A2E /* AppStorage+Extensions.swift */; };
@@ -59,7 +60,6 @@
 		45AC27A629F7559A000320E4 /* FloatingPanelModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC27A329F75594000320E4 /* FloatingPanelModifier.swift */; };
 		45AC27A829F75884000320E4 /* CustomNSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC27A729F75884000320E4 /* CustomNSApplication.swift */; };
 		45DB602129EF7BBF009CF5C8 /* HighPitchedAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2D2C29EF373800F8E1BA /* HighPitchedAudioPlayer.swift */; };
-		45DB602329EF7BE6009CF5C8 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB602229EF7BE6009CF5C8 /* MotionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,8 +71,9 @@
 		4522AA8429E856550056D6BA /* Armed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Armed.entitlements; sourceTree = "<group>"; };
 		4522AA8B29E856C20056D6BA /* ArmedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmedVM.swift; sourceTree = "<group>"; };
 		4522AA8E29E8576E0056D6BA /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		4522AA9029E861A60056D6BA /* WarnTheifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarnTheifView.swift; sourceTree = "<group>"; };
+		4522AA9029E861A60056D6BA /* WarnTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarnTimerView.swift; sourceTree = "<group>"; };
 		4522AA9229E862410056D6BA /* CameraVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVM.swift; sourceTree = "<group>"; };
+		4526F9AF2A0B176A00CD2913 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		454032B329FF7F1F00C8C08C /* Armed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Armed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		454032B529FF7F1F00C8C08C /* Armed_watchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Armed_watchOSApp.swift; sourceTree = "<group>"; };
 		454032B729FF7F1F00C8C08C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,16 +103,14 @@
 		454B2D2C29EF373800F8E1BA /* HighPitchedAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighPitchedAudioPlayer.swift; sourceTree = "<group>"; };
 		454B2D5029EF40DA00F8E1BA /* Audio+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio+Extension.swift"; sourceTree = "<group>"; };
 		4562557C2A0054F00042A3CF /* Armed-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Armed-macOS-Info.plist"; sourceTree = "<group>"; };
-		4562557D2A00561B0042A3CF /* InformationKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = InformationKit; path = ../InformationKit; sourceTree = "<group>"; };
 		4569146629F338D700309A2E /* CCBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCBackgroundModifier.swift; sourceTree = "<group>"; };
-		4569146829F346C300309A2E /* SirenSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenSlider.swift; sourceTree = "<group>"; };
+		4569146829F346C300309A2E /* CustomSliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSliders.swift; sourceTree = "<group>"; };
 		4569146A29F346F200309A2E /* ControlCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCenterButton.swift; sourceTree = "<group>"; };
 		4569146C29F348B800309A2E /* SirenSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenSettingsView.swift; sourceTree = "<group>"; };
 		4569146E29F3494A00309A2E /* AppStorage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+Extensions.swift"; sourceTree = "<group>"; };
 		45AC27A329F75594000320E4 /* FloatingPanelModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelModifier.swift; sourceTree = "<group>"; };
 		45AC27A429F75594000320E4 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
 		45AC27A729F75884000320E4 /* CustomNSApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSApplication.swift; sourceTree = "<group>"; };
-		45DB602229EF7BE6009CF5C8 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,7 +234,7 @@
 		454B2C8029EACD2D00F8E1BA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				454B2D0329ED427900F8E1BA /* Home */,
+				454B2D0429ED429100F8E1BA /* App Window */,
 				454B2D0729ED42EB00F8E1BA /* Menubar */,
 				454B2D0629ED42CE00F8E1BA /* FloatingWindow */,
 			);
@@ -245,7 +244,6 @@
 		454B2C9A29EBDB1700F8E1BA /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				4562557D2A00561B0042A3CF /* InformationKit */,
 				454B2C9C29EBDB3500F8E1BA /* FluidGradient */,
 				454B2C9D29EBDB3C00F8E1BA /* MacControlCenterUI-main */,
 			);
@@ -258,27 +256,20 @@
 				454B2CF529ED371A00F8E1BA /* Image+Data.swift */,
 				454B2CFB29ED421700F8E1BA /* Corner+View.swift */,
 				454B2D5029EF40DA00F8E1BA /* Audio+Extension.swift */,
+				4526F9AF2A0B176A00CD2913 /* Double+Extension.swift */,
 			);
 			path = ViewExtensions;
 			sourceTree = "<group>";
 		};
-		454B2D0329ED427900F8E1BA /* Home */ = {
+		454B2D0429ED429100F8E1BA /* App Window */ = {
 			isa = PBXGroup;
 			children = (
 				4522AA7D29E856540056D6BA /* ContentView.swift */,
-				454B2D0429ED429100F8E1BA /* Subviews */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		454B2D0429ED429100F8E1BA /* Subviews */ = {
-			isa = PBXGroup;
-			children = (
 				454B2CF929ED420300F8E1BA /* MessageBanner.swift */,
 				454B2D0129ED425200F8E1BA /* CleanButton.swift */,
 				454B2CFF29ED424100F8E1BA /* SingleVideo.swift */,
 			);
-			path = Subviews;
+			path = "App Window";
 			sourceTree = "<group>";
 		};
 		454B2D0629ED42CE00F8E1BA /* FloatingWindow */ = {
@@ -286,7 +277,7 @@
 			children = (
 				45AC27A229F75589000320E4 /* Panel */,
 				454B2C8B29EBD92200F8E1BA /* FluidView.swift */,
-				4522AA9029E861A60056D6BA /* WarnTheifView.swift */,
+				4522AA9029E861A60056D6BA /* WarnTimerView.swift */,
 			);
 			path = FloatingWindow;
 			sourceTree = "<group>";
@@ -297,7 +288,7 @@
 				454B2C8929EBC9AF00F8E1BA /* MenuView.swift */,
 				4569146C29F348B800309A2E /* SirenSettingsView.swift */,
 				454B2D0929ED437C00F8E1BA /* BlinkingSymbol.swift */,
-				4569146829F346C300309A2E /* SirenSlider.swift */,
+				4569146829F346C300309A2E /* CustomSliders.swift */,
 				4569146A29F346F200309A2E /* ControlCenterButton.swift */,
 			);
 			path = Menubar;
@@ -318,7 +309,6 @@
 				454B2D2A29ED476300F8E1BA /* Armed iOS.entitlements */,
 				454B2D1129ED465700F8E1BA /* Armed_iOSApp.swift */,
 				454B2D1329ED465700F8E1BA /* ContentView.swift */,
-				45DB602229EF7BE6009CF5C8 /* MotionManager.swift */,
 				454B2D1529ED465800F8E1BA /* Assets.xcassets */,
 				454B2D1729ED465800F8E1BA /* Preview Content */,
 			);
@@ -530,15 +520,16 @@
 				4522AA7E29E856540056D6BA /* ContentView.swift in Sources */,
 				454B2D0229ED425200F8E1BA /* CleanButton.swift in Sources */,
 				454B2D0A29ED437C00F8E1BA /* BlinkingSymbol.swift in Sources */,
-				4522AA9129E861A60056D6BA /* WarnTheifView.swift in Sources */,
+				4522AA9129E861A60056D6BA /* WarnTimerView.swift in Sources */,
 				4522AA9329E862410056D6BA /* CameraVM.swift in Sources */,
 				4569146F29F3494A00309A2E /* AppStorage+Extensions.swift in Sources */,
 				45AC27A829F75884000320E4 /* CustomNSApplication.swift in Sources */,
 				4522AA8C29E856C20056D6BA /* ArmedVM.swift in Sources */,
+				4526F9B02A0B176A00CD2913 /* Double+Extension.swift in Sources */,
 				454B2CF629ED371A00F8E1BA /* Image+Data.swift in Sources */,
 				4569146B29F346F200309A2E /* ControlCenterButton.swift in Sources */,
 				454B2CFA29ED420300F8E1BA /* MessageBanner.swift in Sources */,
-				4569146929F346C300309A2E /* SirenSlider.swift in Sources */,
+				4569146929F346C300309A2E /* CustomSliders.swift in Sources */,
 				4522AA7C29E856540056D6BA /* ArmedApp.swift in Sources */,
 				4569146729F338D700309A2E /* CCBackgroundModifier.swift in Sources */,
 			);
@@ -562,7 +553,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				454B2D1429ED465700F8E1BA /* ContentView.swift in Sources */,
-				45DB602329EF7BE6009CF5C8 /* MotionManager.swift in Sources */,
 				454B2D2929ED475400F8E1BA /* CloudPhotosView.swift in Sources */,
 				454B2D2629ED467E00F8E1BA /* Persistence.swift in Sources */,
 				45DB602129EF7BBF009CF5C8 /* HighPitchedAudioPlayer.swift in Sources */,

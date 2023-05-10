@@ -5,10 +5,10 @@
 //  Created by Aayush Pokharel on 2023-04-13.
 //
 
+import Defaults
 import SwiftUI
 
-import Defaults
-struct WarnTheifView: View {
+struct WarnTimerView: View {
     @EnvironmentObject var armedVM: ArmedVM
     @EnvironmentObject var cameraVM: CameraVM
 
@@ -194,7 +194,7 @@ struct DangerOverlay: View {
 
 struct ArmedFloatingWindow_Previews: PreviewProvider {
     static var previews: some View {
-        WarnTheifView()
+        WarnTimerView()
             .environmentObject(ArmedVM())
             .environmentObject(CameraVM())
     }

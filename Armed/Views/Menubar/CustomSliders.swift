@@ -44,6 +44,39 @@ struct SirenSlider: View {
     }
 }
 
+// MARK: - Frequency Silder
+
+struct FrequencySlider: View {
+    let frequencyType: String
+    @Binding var binded: CGFloat
+
+    @EnvironmentObject var armedVM: ArmedVM
+    var showWarning: Bool = true
+
+    var body: some View {
+        Group {
+            VStack {
+                HStack {
+                    Text("\(frequencyType) Frequency")
+                    Text(FrequencyFormatter.format(frequency: Double(HighPitchedAudioPlayer.valueToFrequency(binded))))
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    if showWarning {
+                        FrequencyTooCloseWarning()
+                            .environmentObject(armedVM)
+                    }
+                }
+                .font(.callout)
+                .bold()
+                MenuSlider(value: $binded,
+                           image: Image(systemName: "waveform.path")
+                               .symbolRenderingMode(.hierarchical))
+            }
+            .ccGlassButton(padding: 10)
+        }
+    }
+}
+
 struct SirenSlider_Previews: PreviewProvider {
     static var previews: some View {
         SirenSlider()

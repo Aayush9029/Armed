@@ -7,25 +7,6 @@
 
 import SwiftUI
 
-struct VideoModel {
-    let url: URL
-    let type: VideoModelType
-    let title: String
-    let thumbnail: String
-
-    static let video =
-        VideoModel(
-            url: URL(string: "https://www.youtube.com/watch?v=MeVpmNFGqZA&list=PLUBjdhA9EwE5NzjU4-uO5ewEILcJ0UIWG")!,
-            type: .video,
-            title: "Basic Introduction",
-            thumbnail: "BasicIntroduction"
-        )
-}
-
-enum VideoModelType {
-    case video, link
-}
-
 struct SingleVideo: View {
     @Environment(\.openURL) var openURL
     @State private var hovered: Bool = false
@@ -85,4 +66,25 @@ struct SingleVideo_Previews: PreviewProvider {
     static var previews: some View {
         SingleVideo(VideoModel.video)
     }
+}
+
+// MARK: - Single Video Model
+
+struct VideoModel {
+    let url: URL
+    let type: VideoModelType
+    let title: String
+    let thumbnail: String
+
+    static let video =
+        VideoModel(
+            url: URL(string: "https://www.youtube.com/watch?v=MeVpmNFGqZA&list=PLUBjdhA9EwE5NzjU4-uO5ewEILcJ0UIWG")!,
+            type: .video,
+            title: "Basic Introduction",
+            thumbnail: "BasicIntroduction"
+        )
+}
+
+enum VideoModelType {
+    case video, link
 }

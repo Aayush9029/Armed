@@ -26,6 +26,8 @@ struct CustomCleanButton: View {
     }
 }
 
+// MARK: - Reusable Clean Button Label
+
 struct CustomCleanButtonLabel: View {
     @State private var hovered: Bool = false
     let symbol: String

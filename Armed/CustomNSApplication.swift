@@ -6,9 +6,3 @@
 //
 
 import AppKit
-
-class CustomNSApplication: NSApplication {
-    override func terminate(_ sender: Any?) {
-        // Do nothing to prevent the app from closing.
-    }
-}

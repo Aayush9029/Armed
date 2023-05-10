@@ -5,6 +5,7 @@
 //  Created by Aayush Pokharel on 2023-04-13.
 //
 
+import Defaults
 import MacControlCenterUI
 import MenuBarExtraAccess
 import SwiftUI
@@ -57,8 +58,6 @@ struct ArmedApp: App {
     }
 }
 
-import Defaults
-
 class AppDelegate: NSObject, NSApplicationDelegate {
     @Default(.showInDock) var showInDock
 
@@ -69,5 +68,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.setActivationPolicy(.regular)
         let sharedApplication = CustomNSApplication.shared
         sharedApplication.delegate = self
+    }
+}
+
+class CustomNSApplication: NSApplication {
+    override func terminate(_ sender: Any?) {
+        // Do nothing to prevent the app from closing.
     }
 }

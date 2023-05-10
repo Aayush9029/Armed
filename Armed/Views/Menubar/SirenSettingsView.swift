@@ -85,49 +85,7 @@ struct SirenSettingsView: View {
     }
 }
 
-struct SirenSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            SirenSettingsView()
-                .navigationTitle(
-                    Text("Frequency Selector")
-                )
-                .environmentObject(ArmedVM())
-                .frame(width: 320, height: 360)
-        }
-    }
-}
-
-struct FrequencySlider: View {
-    let frequencyType: String
-    @Binding var binded: CGFloat
-
-    @EnvironmentObject var armedVM: ArmedVM
-    var showWarning: Bool = true
-
-    var body: some View {
-        Group {
-            VStack {
-                HStack {
-                    Text("\(frequencyType) Frequency")
-                    Text(FrequencyFormatter.format(frequency: Double(HighPitchedAudioPlayer.valueToFrequency(binded))))
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    if showWarning {
-                        FrequencyTooCloseWarning()
-                            .environmentObject(armedVM)
-                    }
-                }
-                .font(.callout)
-                .bold()
-                MenuSlider(value: $binded,
-                           image: Image(systemName: "waveform.path")
-                               .symbolRenderingMode(.hierarchical))
-            }
-            .ccGlassButton(padding: 10)
-        }
-    }
-}
+// MARK: - Too Close Warning View
 
 struct FrequencyTooCloseWarning: View {
     @EnvironmentObject var armedVM: ArmedVM
@@ -156,6 +114,8 @@ struct FrequencyTooCloseWarning: View {
     }
 }
 
+// MARK: - Single Sine Wave
+
 struct SineWave: Shape {
     var frequency: Double
     var amplitude: CGFloat
@@ -180,23 +140,15 @@ struct SineWave: Shape {
     }
 }
 
-enum FrequencyFormatter {
-    static func format(frequency: Double) -> String {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        numberFormatter.maximumFractionDigits = 2
-
-        if frequency < 1_000 {
-            return "\(numberFormatter.string(from: NSNumber(value: frequency))!) Hz"
-        } else if frequency >= 1_000 && frequency < 1_000_000 {
-            let kilohertzValue = frequency / 1_000
-            return "\(numberFormatter.string(from: NSNumber(value: kilohertzValue))!) kHz"
-        } else if frequency >= 1_000_000 && frequency < 1_000_000_000 {
-            let megahertzValue = frequency / 1_000_000
-            return "\(numberFormatter.string(from: NSNumber(value: megahertzValue))!) MHz"
-        } else {
-            let gigahertzValue = frequency / 1_000_000_000
-            return "\(numberFormatter.string(from: NSNumber(value: gigahertzValue))!) GHz"
+struct SirenSettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            SirenSettingsView()
+                .navigationTitle(
+                    Text("Frequency Selector")
+                )
+                .environmentObject(ArmedVM())
+                .frame(width: 320, height: 360)
         }
     }
 }

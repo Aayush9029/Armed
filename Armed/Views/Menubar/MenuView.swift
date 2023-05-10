@@ -112,7 +112,7 @@ struct MenuView: View {
                 }
                 .floatingPanel(isPresented: $armedVM.armed, content: {
                     if warnTheif {
-                        WarnTheifView()
+                        WarnTimerView()
                             .environmentObject(armedVM)
                             .environmentObject(cameraVM)
                     }
@@ -143,6 +143,8 @@ struct MenuView: View {
     }
 }
 
+// MARK: - Menu Options
+
 struct ArmedOptions: View {
     @Default(.warnTheif) var warnTheif
     @Default(.flashes) var flashes
@@ -171,14 +173,7 @@ struct ArmedOptions: View {
     }
 }
 
-struct MenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuView(isMenuPresented: .constant(true))
-            .environmentObject(ArmedVM())
-            .environmentObject(CameraVM())
-            .frame(width: 320, height: 360)
-    }
-}
+// MARK: - Enable Camera Label
 
 struct EnableCameraLabel: View {
     var body: some View {
@@ -194,5 +189,14 @@ struct EnableCameraLabel: View {
                     CameraVM.showCameraSettingsAlert()
                 }
         }
+    }
+}
+
+struct MenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        MenuView(isMenuPresented: .constant(true))
+            .environmentObject(ArmedVM())
+            .environmentObject(CameraVM())
+            .frame(width: 320, height: 360)
     }
 }

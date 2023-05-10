@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "InformationKit",
+        "repositoryURL": "https://github.com/Aayush9029/InformationKit.git",
+        "state": {
+          "branch": "main",
+          "revision": "fc408cd8692cd76bf1b9f73441bad20511a64076",
+          "version": null
+        }
+      },
+      {
         "package": "MenuBarExtraAccess",
         "repositoryURL": "https://github.com/orchetect/MenuBarExtraAccess",
         "state": {
