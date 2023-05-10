@@ -53,7 +53,7 @@ jobs:
       ##########################
       - name: Build with xcodebuild
         run: |
-          xcodebuild -project Armed.xcodeproj -scheme Armed macOS -configuration Release archive -archivePath Armed.xcarchive \
+          xcodebuild -project Armed.xcodeproj -scheme "Armed macOS" -configuration Release archive -archivePath Armed.xcarchive \
           COMPILER_INDEX_STORE_ENABLE=NO
 
       ##########################
