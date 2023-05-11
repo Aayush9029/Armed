@@ -701,6 +701,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aayush.opensource.Armed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -734,6 +735,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aayush.opensource.Armed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
