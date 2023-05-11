@@ -7,7 +7,6 @@
   <a aria-label="Follow Developer on Linkedin" href="https://www.linkedin.com/in/aayush-p-616b6b16a/" target="_blank">
     <img alt="" src="https://img.shields.io/badge/Follow%20@Aayush Pokharel-black.svg?style=for-the-badge&logo=Linkedin">
   </a>
-    </a>
     <a aria-label="Download App" href="https://aayush9029.gumroad.com/l/armed" target="_blank">
     <img alt="" src="https://img.shields.io/badge/Download%20Latest%20Version-black.svg?style=for-the-badge&logo=apple">
   </a>
