@@ -16,8 +16,9 @@ struct MenuView: View {
     @Binding var isMenuPresented: Bool
 
     let persistenceController = PersistenceController.shared
-
-    @Default(.warnTheif) var warnTheif
+    @Default(.siren) var siren
+    @Default(.showInDock) var showInDock
+    @Default(.maxVolume) var maxVolume
 
     var body: some View {
         NavigationStack {
@@ -37,7 +38,14 @@ struct MenuView: View {
                                 Text("\(!armedVM.isConnected ? "Connect" : "Connected") to Power Source")
                                     .foregroundStyle(.secondary)
                             }
-
+                            if armedVM.isConnected && siren && NSSound.systemVolume < 0.5 && !maxVolume {
+                                HStack {
+                                    BlinkingSymbol(onSymbol: "speaker.wave.2.fill", offSymbol: "speaker.fill", state: false)
+                                    Spacer()
+                                    Text("Sound Volume is only \(Int(NSSound.systemVolume * 100))%")
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
                             if !cameraVM.hasCameraAccess() {
                                 EnableCameraLabel()
                             }
@@ -56,8 +64,13 @@ struct MenuView: View {
                                             tint: .red
                                         ) {
                                             if armedVM.armed {
-                                                _ = armedVM.authenticate()
+                                                if armedVM.authenticate() && !showInDock {
+                                                    NSApp.setActivationPolicy(.regular)
+                                                }
                                             } else {
+                                                if showInDock {
+                                                    NSApp.setActivationPolicy(.prohibited)
+                                                }
                                                 armedVM.armed.toggle()
                                             }
                                         }
@@ -111,11 +124,9 @@ struct MenuView: View {
                     }
                 }
                 .floatingPanel(isPresented: $armedVM.armed, content: {
-                    if warnTheif {
-                        WarnTimerView()
-                            .environmentObject(armedVM)
-                            .environmentObject(cameraVM)
-                    }
+                    WarnTimerView()
+                        .environmentObject(armedVM)
+                        .environmentObject(cameraVM)
 
                 })
                 .onChange(of: armedVM.armed) { newValue in
@@ -146,8 +157,8 @@ struct MenuView: View {
 // MARK: - Menu Options
 
 struct ArmedOptions: View {
-    @Default(.warnTheif) var warnTheif
-    @Default(.flashes) var flashes
+    @Default(.showInDock) var showInDock
+    @Default(.maxVolume) var maxVolume
     @Default(.captureImage) var captureImage
     @Default(.siren) var siren
 
@@ -157,17 +168,20 @@ struct ArmedOptions: View {
                 ControlCenterButton(captureImage, title: "Capture\nPlugged", icon: "camera") {
                     captureImage.toggle()
                 }
-                ControlCenterButton(warnTheif, title: "Show\nWarning", icon: "eye.slash") {
-                    warnTheif.toggle()
+                ControlCenterButton(!showInDock, title: "Hide\n Dock", icon: "dock.arrow.down.rectangle") {
+                    showInDock.toggle()
+                    NSApp.setActivationPolicy(showInDock ? .regular : .prohibited)
                 }
             }
             GridRow {
                 ControlCenterButton(siren, title: "Play\nSiren", icon: "light.beacon.max") {
                     siren.toggle()
                 }
-                ControlCenterButton(flashes, title: "Flash\nLights", icon: "sun.max") {
-                    flashes.toggle()
+                ControlCenterButton(maxVolume, title: "Max\nVolume", icon: "speaker.wave.3.fill", tint: .red) {
+                    maxVolume.toggle()
                 }
+                .disabled(!siren)
+                .opacity(siren ? 1 : 0.15)
             }
         }
     }

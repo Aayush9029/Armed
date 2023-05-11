@@ -6,16 +6,20 @@
 //
 
 import AppKit
+import Defaults
 import FluidGradient
 import InformationKit
+import MacControlCenterUI
 import MenuBarExtraAccess
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.openURL) var openURL
     @EnvironmentObject var cameraVM: CameraVM
     @EnvironmentObject var armedVM: ArmedVM
     @Binding var isMenuPresented: Bool
-
+    @Default(.showInDock) var showInDock
+    @State private var confrimHide: Bool = false
     var body: some View {
         NavigationStack {
             VStack {
@@ -48,10 +52,10 @@ struct ContentView: View {
                                     .font(.callout)
                                     .multilineTextAlignment(.center)
                             }
-
+                            
                             HStack { Spacer() }
                             Text("Show menu bar app")
-
+                            
                             Toggle("", isOn: $isMenuPresented)
                                 .toggleStyle(.switch)
                                 .labelsHidden()
@@ -68,23 +72,55 @@ struct ContentView: View {
                                 .stroke(.tertiary, lineWidth: 2)
                         )
                     }
-
+                    
                     SingleVideo(VideoModel.video)
-
+                    
                     Spacer()
+                    
+                    CustomCleanButton("Hide Window\(showInDock ? " + Dock Icon" : "")", symbol: "dock.rectangle", tint: .blue) {
+                        if showInDock {
+                            confrimHide.toggle()
+                        } else {
+                            NSApp.keyWindow?.close()
+                        }
+                    }
+                    .alert(isPresented: $confrimHide) {
+                        Alert(
+                            title: Text("Hide Armed Dock icon."),
+                            message: Text("This will hide the Armed app icon from the dock. (recommended)"),
+                            primaryButton: .default(Text("Hide Dock Icon + Main Window")) {
+                                showInDock = false
+                                NSApp.setActivationPolicy(.prohibited)
+                                NSApp.keyWindow?.close()
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
+                
+                    HStack {
+                        Text("To view this window again, simply re-launch Armed app.")
+                        Spacer()
+                    }
 
+                    .font(.callout)
+                    .padding(8)
+                    .background(.thickMaterial)
+                    .cornerRadius(12)
+                    Divider()
                     HStack {
                         CustomCleanButton("Website", symbol: "safari") {
-                            print("Hi")
+                            openURL(URL(string: "https://armed.aayush.art")!)
                         }
                         CustomCleanButton("Release Notes", symbol: "list.bullet.clipboard") {
-                            print("Hi")
+                            openURL(URL(string: "https://github.com/Aayush9029/Armed/releases")!)
                         }
                     }
                 }
                 .padding(12)
             }
         }
+        .frame(width: 320, height: 640)
+        .background(VisualEffect.popoverWindow().ignoresSafeArea())
     }
 }
 

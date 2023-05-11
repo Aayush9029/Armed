@@ -5,12 +5,8 @@
 //  Created by Aayush Pokharel on 2023-04-18.
 //
 
-import SwiftUI
-#if os(macOS)
-import AppKit
-#endif
 import AVFoundation
-import Foundation
+import SwiftUI
 
 import Defaults
 
@@ -19,7 +15,6 @@ class HighPitchedAudioPlayer: ObservableObject {
     private let playerNode = AVAudioPlayerNode()
     private var buffer: AVAudioPCMBuffer!
     private let format = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1)
-
     private var timer: Timer?
 
     private var frequencies: [Float] = []
@@ -27,8 +22,10 @@ class HighPitchedAudioPlayer: ObservableObject {
 
     @Default(.topFrequency) var topFrequency
     @Default(.bottomFrequency) var bottomFrequency
+    @Default(.maxVolume) var maxVolume
 
     var customPlaying: Bool = false
+
     init() {
         updateFrequencies()
     }
@@ -64,7 +61,6 @@ class HighPitchedAudioPlayer: ObservableObject {
 
     func playDemo() {
         frequencyIndex = 0
-        print(frequencies)
         customPlaying = true
         play(after: 0.0)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -91,11 +87,11 @@ class HighPitchedAudioPlayer: ObservableObject {
 
     func playNextFrequency() {
         if !isPlaying() { return }
-        #if os(macOS)
-        if !customPlaying {
-            NSSound.systemVolume = 0.25
+
+        if !customPlaying && maxVolume {
+            NSSound.systemVolume = 1.0
         }
-        #endif
+
         buffer = createBuffer(forFrequency: frequencies[frequencyIndex])
         playerNode.scheduleBuffer(buffer, at: nil, options: .loops, completionHandler: nil)
         playerNode.play()

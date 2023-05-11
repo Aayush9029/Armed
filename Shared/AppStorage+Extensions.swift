@@ -9,16 +9,18 @@ import Defaults
 import SwiftUI
 
 public extension Defaults.Keys {
-    static let warnTheif = Key<Bool>("WARNTHEIF", default: false)
     static let siren = Key<Bool>("SIREN", default: false)
-    static let flashes = Key<Bool>("FLASHES", default: false)
+    static let maxVolume = Key<Bool>("MAXVOLUME", default: false)
     static let captureImage = Key<Bool>("CAPTUREIMAGE", default: false)
-    static let blurPreview = Key<Bool>("BLURPREVIEW", default: false)
+    static let sirenTimer = Key<CGFloat>("SIRENTIMER", default: 0.333) // 0.333 * 30 = 10 sec
+
     static let message = Key<String>("MESSAGE", default: "Siren will play")
+
     static let topFrequency = Key<CGFloat>("TOPFREQUENCY", default: 0.6)
     static let bottomFrequency = Key<CGFloat>("BOTTOMFREQUENCY", default: 0.2)
-    static let showInDock = Key<Bool>("SHOWINDOCK", default: false)
+
+    static let showInDock = Key<Bool>("SHOWINDOCK", default: true)
+    static let appOpenCount = Key<Int>("APPOPENCOUNT", default: 0)
 
     static let launchAtLogin = Key<Bool>("LAUNCHATLOGIN", default: false)
-    static let chargeLimit = Key<Double>("CHARGELIMIT", default: 80)
 }

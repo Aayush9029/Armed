@@ -22,8 +22,6 @@ struct ArmedApp: App {
     var body: some Scene {
         Window("Armed Window", id: "armed-window") {
             ContentView(isMenuPresented: $isMenuPresented)
-                .frame(width: 320, height: 640)
-                .background(VisualEffect.popoverWindow().ignoresSafeArea())
                 .environmentObject(armedVM)
                 .environmentObject(cameraVM)
         }
@@ -32,9 +30,9 @@ struct ArmedApp: App {
         .commands {
             CommandGroup(replacing: .appInfo) {
                 // Create a custom Quit menu item with a custom action.
-                Button(armedVM.armed ? "Authenticate" : "Quit Armed") {
-                    if !armedVM.armed { NSApp.terminate(nil) } else {
-                        let status = armedVM.authenticate()
+                Button(self.armedVM.armed ? "Authenticate" : "Quit Armed") {
+                    if !self.armedVM.armed { NSApp.terminate(nil) } else {
+                        let status = self.armedVM.authenticate()
                         print(status)
                         if status {
                             NSApp.terminate(nil)
@@ -44,10 +42,9 @@ struct ArmedApp: App {
                 .keyboardShortcut("q", modifiers: [.command])
             }
         }
-
         MenuBarExtra(content: {
             MenuView(isMenuPresented: $isMenuPresented)
-                .frame(width: 320, height: 360)
+                .frame(width: 320, height: 380)
                 .environmentObject(armedVM)
                 .environmentObject(cameraVM)
 
@@ -64,8 +61,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Override the `applicationDidFinishLaunching` method.
     func applicationDidFinishLaunching(_ notification: Notification) {
 //        Disable Content (non-menu) view launch if not first time or not called from menu bar.
+
         NSApp.setActivationPolicy(showInDock ? .regular : .prohibited)
-        NSApp.setActivationPolicy(.regular)
         let sharedApplication = CustomNSApplication.shared
         sharedApplication.delegate = self
     }

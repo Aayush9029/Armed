@@ -59,7 +59,8 @@ extension View {
     // *
     func floatingPanel<Content: View>(isPresented: Binding<Bool>,
                                       contentRect: CGRect = CGRect(x: 0, y: 0, width: NSScreen().frame.width, height: NSScreen().frame.height),
-                                      @ViewBuilder content: @escaping () -> Content) -> some View {
+                                      @ViewBuilder content: @escaping () -> Content) -> some View
+    {
         modifier(FloatingPanelModifier(isPresented: isPresented, contentRect: contentRect, view: content))
     }
 }

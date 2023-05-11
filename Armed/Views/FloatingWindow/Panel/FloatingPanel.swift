@@ -14,7 +14,8 @@ class FloatingPanel<Content: View>: NSPanel {
          contentRect: NSRect,
          backing: NSWindow.BackingStoreType = .buffered,
          defer flag: Bool = false,
-         isPresented: Binding<Bool>) {
+         isPresented: Binding<Bool>)
+    {
         // Initialize the binding variable by assigning the whole value via an underscore
         self._isPresented = isPresented
 
@@ -72,7 +73,8 @@ class FloatingPanel<Content: View>: NSPanel {
     override func performKeyEquivalent(with event: NSEvent) -> Bool {
         if event.type == .keyDown,
            event.modifierFlags.contains(.command),
-           event.keyCode == kVK_ANSI_Q {
+           event.keyCode == kVK_ANSI_Q
+        {
             return false
         }
         return super.performKeyEquivalent(with: event)
@@ -81,7 +83,8 @@ class FloatingPanel<Content: View>: NSPanel {
     override func keyDown(with event: NSEvent) {
         if event.type == .keyDown,
            event.modifierFlags.contains(.command),
-           event.keyCode == kVK_ANSI_Q {
+           event.keyCode == kVK_ANSI_Q
+        {
             return
         }
         super.keyDown(with: event)

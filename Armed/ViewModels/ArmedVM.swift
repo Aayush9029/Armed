@@ -16,7 +16,6 @@ class ArmedVM: ObservableObject {
     @Published var highPitchedPlayer = HighPitchedAudioPlayer()
 
     @Published var armed: Bool = false
-    @Published var soundTimer: CGFloat = 0.2 // 0.2 * 30 = 6 sec
 
     //    UI View variables
     @Published var isConnected: Bool = false
@@ -25,6 +24,7 @@ class ArmedVM: ObservableObject {
     private var monitor: AnyCancellable?
     private var refreshInterval: TimeInterval = 1.0
 
+    @Default(.sirenTimer) var sirenTimer
     @Default(.siren) var siren
     init() {
         startMonitoringBattery()
@@ -59,7 +59,11 @@ class ArmedVM: ObservableObject {
                 return
             }
 
-            if !isConnected && armed { highPitchedPlayer.play(after: soundTimer * 30); return }
+            if !isConnected && armed && !highPitchedPlayer.isPlaying() {
+                print("Playing Sound after \(sirenTimer * 30)")
+                highPitchedPlayer.play(after: sirenTimer * 30)
+                return
+            }
         }
     }
 

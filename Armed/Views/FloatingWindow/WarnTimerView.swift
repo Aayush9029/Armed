@@ -13,17 +13,17 @@ struct WarnTimerView: View {
     @EnvironmentObject var cameraVM: CameraVM
 
     @Default(.message) var message
-    @Default(.flashes) var flashes
+    @Default(.sirenTimer) var sirenTimer
+    @Default(.maxVolume) var maxVolume
 
     var body: some View {
         ZStack {
             if self.armedVM.armed {
                 if !self.armedVM.isConnected {
                     ZStack {
-                        if self.flashes {
-                            FlashLights()
-                        }
-                        TimerView(inputTime: self.armedVM.soundTimer)
+                        FlashLights()
+
+                        TimerView(inputTime: self.sirenTimer)
                     }.ignoresSafeArea()
 
                 } else {

@@ -5,12 +5,14 @@
 //  Created by Aayush Pokharel on 2023-04-21.
 //
 
+import Defaults
 import MacControlCenterUI
 import SwiftUI
 
 struct SirenSlider: View {
     @EnvironmentObject var armedVM: ArmedVM
     @State private var hovering: Bool = false
+    @Default(.sirenTimer) var sirenTimer
     private let sliderWidth: CGFloat = 270
     var body: some View {
         NavigationLink {
@@ -20,7 +22,7 @@ struct SirenSlider: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("Siren Countdown")
-                    Text("\(Int(armedVM.soundTimer * 30))s")
+                    Text("\(Int(sirenTimer * 30))s")
                         .foregroundStyle(.secondary)
                     Spacer()
 
@@ -30,7 +32,7 @@ struct SirenSlider: View {
                 }
                 .font(.callout)
                 .bold()
-                MenuSlider(value: $armedVM.soundTimer,
+                MenuSlider(value: $sirenTimer,
                            image: Image(systemName: "timer")
                                .symbolRenderingMode(.hierarchical))
                     .frame(minWidth: sliderWidth)

@@ -58,8 +58,6 @@
 		4569146F29F3494A00309A2E /* AppStorage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146E29F3494A00309A2E /* AppStorage+Extensions.swift */; };
 		45AC27A529F7559A000320E4 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC27A429F75594000320E4 /* FloatingPanel.swift */; };
 		45AC27A629F7559A000320E4 /* FloatingPanelModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC27A329F75594000320E4 /* FloatingPanelModifier.swift */; };
-		45AC27A829F75884000320E4 /* CustomNSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC27A729F75884000320E4 /* CustomNSApplication.swift */; };
-		45DB602129EF7BBF009CF5C8 /* HighPitchedAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2D2C29EF373800F8E1BA /* HighPitchedAudioPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,7 +108,6 @@
 		4569146E29F3494A00309A2E /* AppStorage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+Extensions.swift"; sourceTree = "<group>"; };
 		45AC27A329F75594000320E4 /* FloatingPanelModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelModifier.swift; sourceTree = "<group>"; };
 		45AC27A429F75594000320E4 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
-		45AC27A729F75884000320E4 /* CustomNSApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				4522AA7B29E856540056D6BA /* ArmedApp.swift */,
-				45AC27A729F75884000320E4 /* CustomNSApplication.swift */,
 				4569146529F338BE00309A2E /* ViewModifiers */,
 				454B2CF429ED370900F8E1BA /* ViewExtensions */,
 				454B2C8029EACD2D00F8E1BA /* Views */,
@@ -225,6 +221,7 @@
 		454B2C7F29EACD2700F8E1BA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				454B2D2C29EF373800F8E1BA /* HighPitchedAudioPlayer.swift */,
 				4522AA9229E862410056D6BA /* CameraVM.swift */,
 				4522AA8B29E856C20056D6BA /* ArmedVM.swift */,
 			);
@@ -327,7 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				4569146E29F3494A00309A2E /* AppStorage+Extensions.swift */,
-				454B2D2C29EF373800F8E1BA /* HighPitchedAudioPlayer.swift */,
 				454B2D2B29EF2D0F00F8E1BA /* Views */,
 				454B2D0829ED433F00F8E1BA /* CoreData */,
 			);
@@ -523,7 +519,6 @@
 				4522AA9129E861A60056D6BA /* WarnTimerView.swift in Sources */,
 				4522AA9329E862410056D6BA /* CameraVM.swift in Sources */,
 				4569146F29F3494A00309A2E /* AppStorage+Extensions.swift in Sources */,
-				45AC27A829F75884000320E4 /* CustomNSApplication.swift in Sources */,
 				4522AA8C29E856C20056D6BA /* ArmedVM.swift in Sources */,
 				4526F9B02A0B176A00CD2913 /* Double+Extension.swift in Sources */,
 				454B2CF629ED371A00F8E1BA /* Image+Data.swift in Sources */,
@@ -555,7 +550,6 @@
 				454B2D1429ED465700F8E1BA /* ContentView.swift in Sources */,
 				454B2D2929ED475400F8E1BA /* CloudPhotosView.swift in Sources */,
 				454B2D2629ED467E00F8E1BA /* Persistence.swift in Sources */,
-				45DB602129EF7BBF009CF5C8 /* HighPitchedAudioPlayer.swift in Sources */,
 				454B2D1229ED465700F8E1BA /* Armed_iOSApp.swift in Sources */,
 				454B2D2529ED467C00F8E1BA /* ArmedModels.xcdatamodeld in Sources */,
 				454483562A0B07AF0080EA38 /* AppStorage+Extensions.swift in Sources */,
@@ -689,9 +683,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Armed/Armed.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Armed/Preview Content\"";
 				DEVELOPMENT_TEAM = 4538W4A79B;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -721,9 +716,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Armed/Armed.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Armed/Preview Content\"";
 				DEVELOPMENT_TEAM = 4538W4A79B;
 				ENABLE_HARDENED_RUNTIME = YES;

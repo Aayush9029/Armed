@@ -26,7 +26,7 @@ struct BlinkingSymbol: View {
             .symbolVariant(.fill)
             .foregroundColor(state ? .green : .red)
             .opacity((blink && state) ? 1 : 0.5)
-            .shadow(color: state ? .green : .red, radius: blink ? 4 : 0)
+            .shadow(color: state ? .green.opacity(0.5) : .red.opacity(0.5), radius: blink ? 8 : 0)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     blink.toggle()
