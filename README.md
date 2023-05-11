@@ -18,10 +18,3 @@
 Armed, a free and open-source macOS app that's like having a trusty sidekick to watch over your MacBook when you leave it unattended in places like libraries or coffee shops.This app actively monitors and detects tampering attempts, alerting the user and capturing the perpetrator's image, playing siren and more in the process.
 
 <img width="1012" alt="github banner" src="https://user-images.githubusercontent.com/43297314/235415090-ae95d338-7608-4870-8a09-1944e9db5ea2.png">
-
----
-
-> **Warning**
->
-> Work In Progress, Armed is currently in development expect major app and design changes, contributions are welcome.
-
