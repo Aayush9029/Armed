@@ -1,0 +1,84 @@
+name: Build Armed Nightly
+
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ref-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-nightly:
+    runs-on: macos-13
+    timeout-minutes: 15 # If a build exceeds 15 mins, it probably isn't ever going to complete
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      ##########################
+      ## Select Xcode
+      ##########################
+      - name: Select Xcode 14.3
+        run: sudo xcode-select -s /Applications/Xcode_14.3.app
+
+      ##########################
+      ## Caching
+      ##########################
+      # DerivedData
+      - uses: actions/cache@v3
+        name: Cache Derived Data
+        with:
+          path: |
+            ~/Library/Developer/Xcode/DerivedData/Armed-*/Build
+            ~/Library/Developer/Xcode/DerivedData/Armed-*/SourcePackages
+          key: ${{ runner.os }}-derivedData-cache-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-derivedData-cache-
+      - name: Avoid inode changes for DerivedData
+        run: defaults write com.apple.dt.XCBuild IgnoreFileSystemDeviceInodeChanges -bool YES
+
+      # SPM Packages
+      - uses: actions/cache@v3
+        name: Cache SPM Packages
+        with:
+          path: /Users/runner/Library/Developer/Xcode/DerivedData/**/SourcePackages/checkouts
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+  
+      ##########################
+      ## Build
+      ##########################
+      - name: Build with xcodebuild
+        run: |
+          xcodebuild -project Armed.xcodeproj -scheme "Armed macOS" -configuration Release archive -archivePath Armed.xcarchive \
+          COMPILER_INDEX_STORE_ENABLE=NO
+
+      ##########################
+      ## Export
+      ##########################
+      - name: Export Release Build
+        uses: devbotsxyz/xcode-export-archive@main
+        with:
+          project: Armed.xcodeproj
+          scheme: Armed
+
+      ##########################
+      ## Create DMG
+      ##########################
+      - name: Create Release DMG
+        run: npm i -g create-dmg && create-dmg Export/Armed.app
+
+      - name: Staple Release Build
+        run: xcrun stapler staple Armed*.dmg
+
+      ##########################
+      ## Upload DMG to build artifacts
+      ##########################
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: armed-alpha
+          path: Armed*.dmg
