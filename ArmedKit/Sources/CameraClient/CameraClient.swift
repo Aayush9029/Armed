@@ -5,9 +5,9 @@ import SwiftUI
 
 public protocol CameraClient {
     var frames: AsyncThrowingStream<CIImage?, Error> { get }
+    var cameraAccessStream: AsyncStream<Bool> { get }
     func startCamera()
     func stopCamera()
-    func hasCameraAccess() -> Bool
     func openCameraSettings()
 }
 

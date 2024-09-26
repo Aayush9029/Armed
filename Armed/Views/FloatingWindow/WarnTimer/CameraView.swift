@@ -1,20 +1,6 @@
-//
-//  CameraView.swift
-//  Armed
-//
-//  Created by yush on 9/26/24.
-//
-
-
-//
-//  CameraView.swift
-//  Armed
-//
-//  Created by Aayush Pokharel on 2023-04-13.
-//
-
-import SwiftUI
 import Dependencies
+import Shared
+import SwiftUI
 
 struct CameraView: View {
     @Dependency(\.cameraClient) private var cameraClient
@@ -43,8 +29,8 @@ struct CameraView: View {
         cameraFramesTask = Task {
             do {
                 for try await frame in cameraClient.frames {
-                    if let frame = frame {
-                        frameImage = frame
+                    if let frame {
+                        frameImage = ciImageToImage(frame)
                     }
                 }
             } catch {

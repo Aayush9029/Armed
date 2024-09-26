@@ -5,7 +5,6 @@
 //  Created by yush on 9/26/24.
 //
 
-
 //
 //  ImageBufferRow.swift
 //  Armed
@@ -13,6 +12,7 @@
 //  Created by Aayush Pokharel on 2023-04-13.
 //
 
+import Shared
 import SwiftUI
 
 struct ImageBufferRow: View {
@@ -25,13 +25,15 @@ struct ImageBufferRow: View {
     var body: some View {
         HStack {
             ForEach(imageBuffer) { buffer in
-                buffer.image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 24)
-                    .cornerRadius(12)
-                    .foregroundStyle(.tertiary)
-                    .padding(2)
+                if let image = ciImageToImage(buffer.image) {
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24)
+                        .cornerRadius(12)
+                        .foregroundStyle(.tertiary)
+                        .padding(2)
+                }
             }
         }
         .padding(.horizontal, 2)

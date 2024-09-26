@@ -30,3 +30,7 @@ struct NotMonitoringView: View {
         .background(Rectangle().fill(Color.secondary).ignoresSafeArea())
     }
 }
+
+#Preview {
+    NotMonitoringView()
+}

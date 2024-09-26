@@ -16,6 +16,12 @@ class LiveCameraClient: NSObject, CameraClient, AVCaptureVideoDataOutputSampleBu
     private let videoOutput = AVCaptureVideoDataOutput()
     private var frameContinuation: AsyncThrowingStream<CIImage?, Error>.Continuation?
     private var framesStream: AsyncThrowingStream<CIImage?, Error>?
+    private var cameraAccessContinuation: AsyncStream<Bool>.Continuation?
+
+    lazy var cameraAccessStream: AsyncStream<Bool> = AsyncStream { continuation in
+        self.cameraAccessContinuation = continuation
+        self.checkCameraAccess()
+    }
 
     var frames: AsyncThrowingStream<CIImage?, Error> {
         if let framesStream = framesStream {
@@ -34,8 +40,25 @@ class LiveCameraClient: NSObject, CameraClient, AVCaptureVideoDataOutputSampleBu
         setupCamera()
     }
 
+    private func checkCameraAccess() {
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        switch status {
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                self.cameraAccessContinuation?.yield(granted)
+            }
+        case .restricted, .denied:
+            cameraAccessContinuation?.yield(false)
+        case .authorized:
+            cameraAccessContinuation?.yield(true)
+        @unknown default:
+            cameraAccessContinuation?.yield(false)
+        }
+    }
+
     func startCamera() {
         captureSession.startRunning()
+        checkCameraAccess()
     }
 
     func stopCamera() {
@@ -93,10 +116,4 @@ class LiveCameraClient: NSObject, CameraClient, AVCaptureVideoDataOutputSampleBu
         let ciImage = CIImage(cvImageBuffer: imageBuffer)
         frameContinuation.yield(ciImage)
     }
-}
-
-public func ciImageToImage(_ ciImage: CIImage) -> Image? {
-    let context = CIContext()
-    guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return nil }
-    return Image(decorative: cgImage, scale: 1.0, orientation: .up)
 }

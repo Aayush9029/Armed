@@ -24,21 +24,25 @@ class ArmedVM: ObservableObject {
     @Published var armed: Bool = false
     @Published var isConnected: Bool = false
     @Published var showFrequencyPopover: Bool = false
+    @Published var hasCameraAccess: Bool = false
 
     @Default(.sirenTimer) private var sirenTimer
     @Default(.siren) private var siren
 
     private var batteryMonitorTask: Task<Void, Never>?
     private var cameraTask: Task<Void, Never>?
+    private var cameraAccessTask: Task<Void, Never>?
 
     init() {
         startMonitoringBattery()
+        startMonitoringCameraAccess()
     }
 
     deinit {
         Task {
             await self.stopMonitoringBattery()
             await self.stopCamera()
+            await self.stopMonitoringCameraAccess()
         }
     }
 
@@ -103,7 +107,15 @@ class ArmedVM: ObservableObject {
         cameraClient.stopCamera()
     }
 
-    func hasCameraAccess() async -> Bool {
-        cameraClient.hasCameraAccess()
+    func startMonitoringCameraAccess() {
+        cameraAccessTask = Task {
+            for await access in cameraClient.cameraAccessStream {
+                self.hasCameraAccess = access
+            }
+        }
+    }
+
+    func stopMonitoringCameraAccess() {
+        cameraAccessTask?.cancel()
     }
 }

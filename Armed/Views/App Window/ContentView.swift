@@ -18,12 +18,11 @@ struct ContentView: View {
     @Binding var isMenuPresented: Bool
     @Default(.showInDock) var showInDock
     @State private var confirmHide: Bool = false
-    @State private var hasCameraAccess: Bool = true
 
     var body: some View {
         NavigationStack {
             VStack {
-                if !hasCameraAccess {
+                if !armedVM.hasCameraAccess {
                     MessageBanner(
                         "Camera Access Required",
                         symbol: "camera.fill.badge.ellipsis",
@@ -115,9 +114,6 @@ struct ContentView: View {
                     }
                 }
                 .padding(12)
-            }
-            .task {
-                hasCameraAccess = await armedVM.hasCameraAccess()
             }
         }
         .frame(width: 320, height: 640)
