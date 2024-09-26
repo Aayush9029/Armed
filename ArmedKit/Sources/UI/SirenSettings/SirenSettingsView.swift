@@ -89,7 +89,7 @@ struct PlayOverlayView: View {
             Text("2 seconds")
                 .foregroundStyle(.secondary)
 
-            if !playing {
+            if !playing && NSSound.systemVolume > 0.25 {
                 Text("Please, decrease your volume!")
                     .foregroundStyle(.white)
                     .padding(.horizontal, 6)

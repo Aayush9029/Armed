@@ -7,11 +7,12 @@ import UI
 
 struct MenuView: View {
     @EnvironmentObject var armedVM: ArmedVM
-    
     @Binding var isMenuPresented: Bool
     
     let persistenceController = PersistenceController.shared
+    
     @Dependency(\.playerClient) var playerClient
+    
     @Default(.siren) var siren
     @Default(.topFrequency) var topFrequency
     @Default(.bottomFrequency) var bottomFrequency
@@ -289,10 +290,8 @@ struct EnableCameraLabel: View {
 
 // MARK: - Preview
 
-struct MenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuView(isMenuPresented: .constant(true))
-            .environmentObject(ArmedVM())
-            .frame(width: 320, height: 420)
-    }
+#Preview {
+    MenuView(isMenuPresented: .constant(true))
+        .environmentObject(ArmedVM())
+        .frame(width: 320, height: 420)
 }
