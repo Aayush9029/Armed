@@ -7,11 +7,15 @@ import UI
 
 struct MenuView: View {
     @EnvironmentObject var armedVM: ArmedVM
+    
     @Binding var isMenuPresented: Bool
     
     let persistenceController = PersistenceController.shared
-    
+    @Dependency(\.playerClient) var playerClient
     @Default(.siren) var siren
+    @Default(.topFrequency) var topFrequency
+    @Default(.bottomFrequency) var bottomFrequency
+    
     @Default(.showInDock) var showInDock
     @Default(.maxVolume) var maxVolume
     @Default(.message) var message
@@ -116,7 +120,20 @@ struct MenuView: View {
     
     private var additionalOptions: some View {
         VStack {
-            SirenSlider(sirenTimer: $sirenTimer) {}
+            NavigationLink {
+                SirenSettingsView(
+                    topFrequency: $topFrequency,
+                    bottomFrequency: $bottomFrequency
+                ) {
+                    print("Playing demo")
+                    playerClient.playDemo()
+                }
+                .padding([.bottom, .trailing], 12)
+            } label: {
+                SirenSlider(sirenTimer: $sirenTimer)
+            }
+            .buttonStyle(.plain)
+
             cloudImagesLink
             infoAndQuitButtons
         }
@@ -124,7 +141,7 @@ struct MenuView: View {
     
     private var cloudImagesLink: some View {
         NavigationLink(destination: CloudPhotosView()
-            .padding(.top, -24)
+            .padding(.trailing, 12)
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
         ) {
             HStack {
@@ -213,26 +230,43 @@ struct ArmedOptions: View {
     }
     
     private var captureButton: some View {
-        ControlCenterButton(captureImage, title: "Capture\nPlugged", icon: "camera") {
+        ControlCenterButton(
+            captureImage,
+            title: "Capture\nPlugged",
+            icon: "camera"
+        ) {
             captureImage.toggle()
         }
     }
     
     private var hideDockButton: some View {
-        ControlCenterButton(!showInDock, title: "Hide\n Dock", icon: "dock.arrow.down.rectangle") {
+        ControlCenterButton(
+            !showInDock,
+            title: "Hide\n Dock",
+            icon: "dock.arrow.down.rectangle"
+        ) {
             showInDock.toggle()
             NSApp.setActivationPolicy(showInDock ? .regular : .prohibited)
         }
     }
     
     private var sirenButton: some View {
-        ControlCenterButton(siren, title: "Play\nSiren", icon: "light.beacon.max") {
+        ControlCenterButton(
+            siren,
+            title: "Play\nSiren",
+            icon: "light.beacon.max"
+        ) {
             siren.toggle()
         }
     }
     
     private var maxVolumeButton: some View {
-        ControlCenterButton(maxVolume, title: "Max\nVolume", icon: "speaker.wave.3.fill", tint: .red) {
+        ControlCenterButton(
+            maxVolume,
+            title: "Max\nVolume",
+            icon: "speaker.wave.3.fill",
+            tint: .red
+        ) {
             maxVolume.toggle()
         }
         .disabled(!siren)

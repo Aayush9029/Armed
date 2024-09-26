@@ -1,16 +1,9 @@
-//
-//  LivePlayerClient.swift
-//  Armed
-//
-//  Created by yush on 9/26/24.
-//
-
 import AVFoundation
 import Defaults
 import Shared
 import SwiftUI
 
-class LivePlayerClient: PlayerClient {
+class LivePlayerClient: PlayerClient, ObservableObject {
     private let engine = AVAudioEngine()
     private let playerNode = AVAudioPlayerNode()
     private var buffer: AVAudioPCMBuffer!
@@ -69,6 +62,10 @@ class LivePlayerClient: PlayerClient {
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
                 self.playNextFrequency()
                 self.startTimer()
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                self.playNextFrequency()
             }
         }
     }

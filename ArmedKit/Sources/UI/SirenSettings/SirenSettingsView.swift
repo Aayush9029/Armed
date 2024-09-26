@@ -3,24 +3,21 @@ import Shared
 import SwiftUI
 
 public struct SirenSettingsView: View {
-    @State private var topFrequency: CGFloat
-    @State private var bottomFrequency: CGFloat
+    @Binding var topFrequency: CGFloat
+    @Binding var bottomFrequency: CGFloat
     @State private var hovering: Bool = false
     @State private var playing: Bool = false
 
     let playingAction: () -> Void
-    let updateFrequenciesAction: (CGFloat, CGFloat) -> Void
 
     public init(
-        initialTopFrequency: CGFloat,
-        initialBottomFrequency: CGFloat,
-        playingAction: @escaping () -> Void,
-        updateFrequenciesAction: @escaping (CGFloat, CGFloat) -> Void
+        topFrequency: Binding<CGFloat>,
+        bottomFrequency: Binding<CGFloat>,
+        playingAction: @escaping () -> Void
     ) {
-        self._topFrequency = State(initialValue: initialTopFrequency)
-        self._bottomFrequency = State(initialValue: initialBottomFrequency)
+        self._topFrequency = topFrequency
+        self._bottomFrequency = bottomFrequency
         self.playingAction = playingAction
-        self.updateFrequenciesAction = updateFrequenciesAction
     }
 
     public var body: some View {
@@ -35,9 +32,8 @@ public struct SirenSettingsView: View {
 
             FrequencyControlsView(
                 topFrequency: $topFrequency,
-                bottomFrequency: $bottomFrequency,
-                updateFrequenciesAction: updateFrequenciesAction
-            ).padding(8)
+                bottomFrequency: $bottomFrequency
+            )
         }
     }
 }
@@ -119,7 +115,6 @@ struct PlayOverlayView: View {
 struct FrequencyControlsView: View {
     @Binding var topFrequency: CGFloat
     @Binding var bottomFrequency: CGFloat
-    let updateFrequenciesAction: (CGFloat, CGFloat) -> Void
 
     var body: some View {
         VStack {
@@ -131,28 +126,28 @@ struct FrequencyControlsView: View {
             FrequencySlider(
                 frequencyType: "Min",
                 binded: $bottomFrequency,
-                otherFrequency: topFrequency
+                otherFrequency: 999.0
             )
-        }
-        .onChange(of: topFrequency) { newValue in
-            updateFrequenciesAction(newValue, bottomFrequency)
-        }
-        .onChange(of: bottomFrequency) { newValue in
-            updateFrequenciesAction(topFrequency, newValue)
         }
     }
 }
 
 #Preview {
-    SirenSettingsView(
-        initialTopFrequency: 0.8,
-        initialBottomFrequency: 0.2,
-        playingAction: {
-            print("Playing")
-        },
-        updateFrequenciesAction: { top, bottom in
-            print("Frequencies updated - Top: \(top), Bottom: \(bottom)")
+    struct PreviewWrapper: View {
+        @State private var topFrequency: CGFloat = 0.8
+        @State private var bottomFrequency: CGFloat = 0.2
+
+        var body: some View {
+            SirenSettingsView(
+                topFrequency: $topFrequency,
+                bottomFrequency: $bottomFrequency,
+                playingAction: {
+                    print("Playing")
+                }
+            )
+            .frame(width: 256, height: 320)
         }
-    )
-    .frame(width: 256, height: 320)
+    }
+
+    return PreviewWrapper()
 }

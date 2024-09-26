@@ -13,9 +13,9 @@ struct FrequencyTooCloseWarning: View {
     var body: some View {
         Group {
             Label("Too Close", systemImage: "exclamationmark.triangle.fill")
-                .onHover(perform: { _ in
-                    popoverIsPresented.toggle()
-                })
+                .onHover { state in
+                    popoverIsPresented = state
+                }
                 .labelStyle(.iconOnly)
                 .foregroundColor(.yellow)
                 .popover(isPresented: $popoverIsPresented) {
