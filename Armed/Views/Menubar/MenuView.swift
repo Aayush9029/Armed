@@ -68,14 +68,18 @@ struct MenuView: View {
             )
             Text("\(!armedVM.isConnected ? "Not" : "") Ready").bold()
             Spacer()
-            Text("\(!armedVM.isConnected ? "connect" : "connected") to power source")
+            Text("\(!armedVM.isConnected ? "Connect a" : "Connected to") power source")
                 .foregroundStyle(.secondary)
         }
     }
     
     private var volumeWarning: some View {
         HStack {
-            BlinkingSymbol(onSymbol: "speaker.wave.2.fill", offSymbol: "speaker.fill", state: false)
+            BlinkingSymbol(
+                onSymbol: "speaker.wave.2.fill",
+                offSymbol: "speaker.fill",
+                state: false
+            )
             Spacer()
             Text("Sound Volume is only \(Int(NSSound.systemVolume * 100))%")
                 .foregroundStyle(.secondary)

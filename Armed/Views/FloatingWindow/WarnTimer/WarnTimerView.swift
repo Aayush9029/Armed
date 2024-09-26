@@ -1,10 +1,3 @@
-//
-//  WarnTimerView.swift
-//  Armed
-//
-//  Created by Aayush Pokharel on 2023-04-13.
-//
-
 import Defaults
 import Dependencies
 import SwiftUI

@@ -1,18 +1,3 @@
-//
-//  TimerView.swift
-//  Armed
-//
-//  Created by yush on 9/26/24.
-//
-
-
-//
-//  TimerView.swift
-//  Armed
-//
-//  Created by Aayush Pokharel on 2023-04-13.
-//
-
 import SwiftUI
 
 struct TimerView: View {

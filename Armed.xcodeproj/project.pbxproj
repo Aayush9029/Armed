@@ -43,7 +43,6 @@
 		454B2D2529ED467C00F8E1BA /* ArmedModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CC729EC003D00F8E1BA /* ArmedModels.xcdatamodeld */; };
 		454B2D2629ED467E00F8E1BA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CC229EC000C00F8E1BA /* Persistence.swift */; };
 		454B2D2929ED475400F8E1BA /* CloudPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CF229ED33D100F8E1BA /* CloudPhotosView.swift */; };
-		454B2D2D29EF373800F8E1BA /* HighPitchedAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2D2C29EF373800F8E1BA /* HighPitchedAudioPlayer.swift */; };
 		456255842A006A930042A3CF /* InformationKit in Frameworks */ = {isa = PBXBuildFile; productRef = 456255832A006A930042A3CF /* InformationKit */; };
 		4569146F29F3494A00309A2E /* AppStorage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146E29F3494A00309A2E /* AppStorage+Extensions.swift */; };
 		45AC27A529F7559A000320E4 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC27A429F75594000320E4 /* FloatingPanel.swift */; };
@@ -64,6 +63,7 @@
 		51E107C42CA5A1CC000B164A /* ImageBufferRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107C32CA5A1CC000B164A /* ImageBufferRow.swift */; };
 		51E107C62CA5A1D4000B164A /* NotMonitoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107C52CA5A1D4000B164A /* NotMonitoringView.swift */; };
 		51E107C82CA5A209000B164A /* BufferImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107C72CA5A209000B164A /* BufferImageModel.swift */; };
+		51E107CA2CA5AFD9000B164A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107C92CA5AFD9000B164A /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,7 +98,6 @@
 		454B2D1829ED465800F8E1BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		454B2D1F29ED465800F8E1BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		454B2D2A29ED476300F8E1BA /* Armed iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Armed iOS.entitlements"; sourceTree = "<group>"; };
-		454B2D2C29EF373800F8E1BA /* HighPitchedAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighPitchedAudioPlayer.swift; sourceTree = "<group>"; };
 		4562557C2A0054F00042A3CF /* Armed-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Armed-macOS-Info.plist"; sourceTree = "<group>"; };
 		4569146E29F3494A00309A2E /* AppStorage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+Extensions.swift"; sourceTree = "<group>"; };
 		45AC27A329F75594000320E4 /* FloatingPanelModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelModifier.swift; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		51E107C32CA5A1CC000B164A /* ImageBufferRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBufferRow.swift; sourceTree = "<group>"; };
 		51E107C52CA5A1D4000B164A /* NotMonitoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotMonitoringView.swift; sourceTree = "<group>"; };
 		51E107C72CA5A209000B164A /* BufferImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferImageModel.swift; sourceTree = "<group>"; };
+		51E107C92CA5AFD9000B164A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +180,7 @@
 		4522AA7A29E856540056D6BA /* Armed */ = {
 			isa = PBXGroup;
 			children = (
+				51E107C92CA5AFD9000B164A /* AppDelegate.swift */,
 				51E107AB2CA59468000B164A /* Dependencies */,
 				4522AA7B29E856540056D6BA /* ArmedApp.swift */,
 				454B2CF429ED370900F8E1BA /* ViewExtensions */,
@@ -232,7 +233,6 @@
 		454B2C7F29EACD2700F8E1BA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				454B2D2C29EF373800F8E1BA /* HighPitchedAudioPlayer.swift */,
 				4522AA8B29E856C20056D6BA /* ArmedVM.swift */,
 			);
 			path = ViewModels;
@@ -529,9 +529,9 @@
 				454B2CF329ED33D100F8E1BA /* CloudPhotosView.swift in Sources */,
 				51E107A92CA59466000B164A /* LivePersistenceClient.swift in Sources */,
 				51E107AA2CA59466000B164A /* PersistenceClient.swift in Sources */,
+				51E107CA2CA5AFD9000B164A /* AppDelegate.swift in Sources */,
 				45AC27A529F7559A000320E4 /* FloatingPanel.swift in Sources */,
 				454B2CD129ED318A00F8E1BA /* ArmedModels.xcdatamodeld in Sources */,
-				454B2D2D29EF373800F8E1BA /* HighPitchedAudioPlayer.swift in Sources */,
 				454B2C8A29EBC9AF00F8E1BA /* MenuView.swift in Sources */,
 				454B2CFC29ED421700F8E1BA /* Corner+View.swift in Sources */,
 				454B2D0029ED424100F8E1BA /* SingleVideo.swift in Sources */,

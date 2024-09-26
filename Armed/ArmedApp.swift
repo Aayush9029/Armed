@@ -1,10 +1,3 @@
-//
-//  ArmedApp.swift
-//  Armed
-//
-//  Created by Aayush Pokharel on 2023-04-13.
-//
-
 import Defaults
 import MacControlCenterUI
 import MenuBarExtraAccess
@@ -12,64 +5,54 @@ import SwiftUI
 
 @main
 struct ArmedApp: App {
-    @StateObject var armedVM: ArmedVM = .init()
-
-    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
-    @State var isMenuPresented: Bool = false
+    @StateObject private var armedVM = ArmedVM()
+    @State private var isMenuPresented = false
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
     var body: some Scene {
-        Window("Armed Window", id: "armed-window") {
+        WindowGroup {
             ContentView(isMenuPresented: $isMenuPresented)
                 .environmentObject(armedVM)
         }
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
         .commands {
-            CommandGroup(replacing: .appInfo) {
-                // Create a custom Quit menu item with a custom action.
-                Button(self.armedVM.armed ? "Authenticate" : "Quit Armed") {
-                    if !self.armedVM.armed { NSApp.terminate(nil) }
-                    else {
-                        Task {
-                            let status = await self.armedVM.authenticate()
-                            print(status)
-                            if status {
-                                NSApp.terminate(nil)
-                            }
-                        }
-                    }
-                }
-                .keyboardShortcut("q", modifiers: [.command])
+            customCommands
+        }
+
+        MenuBarExtra {
+            menuBarContent
+        } label: {
+            menuBarLabel
+        }
+        .menuBarExtraStyle(.window)
+        .menuBarExtraAccess(isPresented: $isMenuPresented)
+    }
+
+    private var customCommands: some Commands {
+        CommandGroup(replacing: .appInfo) {
+            Button(armedVM.armed ? "Authenticate" : "Quit Armed") {
+                armedVM.armed ? authenticateAndQuit() : NSApp.terminate(nil)
+            }
+            .keyboardShortcut("q", modifiers: .command)
+        }
+    }
+
+    private var menuBarContent: some View {
+        MenuView(isMenuPresented: $isMenuPresented)
+            .frame(width: 320, height: 380)
+            .environmentObject(armedVM)
+    }
+
+    private var menuBarLabel: some View {
+        Label("Armed", systemImage: armedVM.armed ? "lock.shield.fill" : "lock.shield")
+    }
+
+    private func authenticateAndQuit() {
+        Task {
+            if await armedVM.authenticate() {
+                NSApp.terminate(nil)
             }
         }
-        MenuBarExtra(content: {
-            MenuView(isMenuPresented: $isMenuPresented)
-                .frame(width: 320, height: 380)
-                .environmentObject(armedVM)
-
-        }) {
-            Label("Armed", systemImage: armedVM.armed ? "lock.shield.fill" : "lock.shield")
-        }
-        .menuBarExtraStyle(.window).menuBarExtraAccess(isPresented: $isMenuPresented)
-    }
-}
-
-class AppDelegate: NSObject, NSApplicationDelegate {
-    @Default(.showInDock) var showInDock
-
-    // Override the `applicationDidFinishLaunching` method.
-    func applicationDidFinishLaunching(_ notification: Notification) {
-//        Disable Content (non-menu) view launch if not first time or not called from menu bar.
-
-        NSApp.setActivationPolicy(showInDock ? .regular : .prohibited)
-        let sharedApplication = CustomNSApplication.shared
-        sharedApplication.delegate = self
-    }
-}
-
-class CustomNSApplication: NSApplication {
-    override func terminate(_ sender: Any?) {
-        // Do nothing to prevent the app from closing.
     }
 }
