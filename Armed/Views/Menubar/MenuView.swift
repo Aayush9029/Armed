@@ -35,7 +35,7 @@ struct MenuView: View {
                                 Text("\(!armedVM.isConnected ? "Not" : "") Ready")
                                     .bold()
                                 Spacer()
-                                Text("\(!armedVM.isConnected ? "Connect" : "Connected") to Power Source")
+                                Text("\(!armedVM.isConnected ? "connect" : "connected") to power source")
                                     .foregroundStyle(.secondary)
                             }
                             if armedVM.isConnected && siren && NSSound.systemVolume < 0.5 && !maxVolume {
@@ -54,7 +54,13 @@ struct MenuView: View {
                                 HStack(spacing: 8) {
                                     if !armedVM.isConnected && !armedVM.armed {
                                         Group {
-                                            ControlCenterButton(false, title: "Connect to charger", icon: "powerplug.fill", tint: .red, size: .title2) {}
+                                            ControlCenterButton(
+                                                false,
+                                                title: "Connect to charger",
+                                                icon: "powerplug.fill",
+                                                tint: .red,
+                                                size: .title2
+                                            ) {}
                                         }
                                     } else {
                                         ControlCenterButton(
@@ -89,35 +95,39 @@ struct MenuView: View {
                             }
 
                             if !armedVM.armed {
-                                HStack {
-                                    NavigationLink(destination: {
-                                        CloudPhotosView()
-                                            .padding(.top, -24)
-                                            .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                                    }, label: {
-                                        HStack {
-                                            Label("Cloud Images", systemImage: "icloud")
-                                            Spacer()
-                                            Image(systemName: "chevron.forward")
-                                                .foregroundStyle(.tertiary)
-                                        }.ccGlassButton()
+                                VStack {
+                                    HStack {
+                                        NavigationLink(destination: {
+                                            CloudPhotosView()
+                                                .padding(.top, -24)
+                                                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                                        }, label: {
+                                            HStack {
+                                                Label("Cloud Images", systemImage: "icloud")
+                                                Spacer()
+                                                Image(systemName: "chevron.forward")
+                                                    .foregroundStyle(.tertiary)
+                                            }.ccGlassButton()
 
-                                    })
-                                    .buttonStyle(.plain)
+                                        })
+                                        .buttonStyle(.plain)
+                                    }
 
                                     HStack {
                                         Label("Info", systemImage: "info.circle")
+                                            .frame(width: 124)
                                             .ccGlassButton()
                                             .onTapGesture {
                                                 showStandardAboutWindow()
                                             }
-                                        Label("Quit", systemImage: "power").labelStyle(.iconOnly)
+                                        Label("Quit", systemImage: "power")
+                                            .frame(width: 124)
                                             .ccGlassButton()
                                             .onTapGesture {
                                                 quit()
                                             }
                                     }
-                                    .labelStyle(.iconOnly)
+                                    .labelStyle(.titleAndIcon)
                                 }
                             }
                         }
@@ -211,6 +221,6 @@ struct MenuView_Previews: PreviewProvider {
         MenuView(isMenuPresented: .constant(true))
             .environmentObject(ArmedVM())
             .environmentObject(CameraVM())
-            .frame(width: 320, height: 360)
+            .frame(width: 320, height: 420)
     }
 }
