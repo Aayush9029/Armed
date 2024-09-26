@@ -14,7 +14,6 @@
 		4522AA8C29E856C20056D6BA /* ArmedVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522AA8B29E856C20056D6BA /* ArmedVM.swift */; };
 		4522AA8F29E8576E0056D6BA /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4522AA8E29E8576E0056D6BA /* IOKit.framework */; };
 		4522AA9129E861A60056D6BA /* WarnTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522AA9029E861A60056D6BA /* WarnTimerView.swift */; };
-		4522AA9329E862410056D6BA /* CameraVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522AA9229E862410056D6BA /* CameraVM.swift */; };
 		4526F9B02A0B176A00CD2913 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4526F9AF2A0B176A00CD2913 /* Double+Extension.swift */; };
 		454032B629FF7F1F00C8C08C /* Armed_watchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454032B529FF7F1F00C8C08C /* Armed_watchOSApp.swift */; };
 		454032B829FF7F1F00C8C08C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454032B729FF7F1F00C8C08C /* ContentView.swift */; };
@@ -29,8 +28,6 @@
 		454483592A0B07B60080EA38 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 454483582A0B07B60080EA38 /* Defaults */; };
 		4544835B2A0B07BA0080EA38 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 4544835A2A0B07BA0080EA38 /* Defaults */; };
 		454B2C8A29EBC9AF00F8E1BA /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2C8929EBC9AF00F8E1BA /* MenuView.swift */; };
-		454B2C8C29EBD92200F8E1BA /* FluidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2C8B29EBD92200F8E1BA /* FluidView.swift */; };
-		454B2C9F29EBDB4500F8E1BA /* FluidGradient in Frameworks */ = {isa = PBXBuildFile; productRef = 454B2C9E29EBDB4500F8E1BA /* FluidGradient */; };
 		454B2CA129EBDB4700F8E1BA /* MacControlCenterUI in Frameworks */ = {isa = PBXBuildFile; productRef = 454B2CA029EBDB4700F8E1BA /* MacControlCenterUI */; };
 		454B2CC329EC000C00F8E1BA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CC229EC000C00F8E1BA /* Persistence.swift */; };
 		454B2CD129ED318A00F8E1BA /* ArmedModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CC729EC003D00F8E1BA /* ArmedModels.xcdatamodeld */; };
@@ -40,7 +37,6 @@
 		454B2CFC29ED421700F8E1BA /* Corner+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CFB29ED421700F8E1BA /* Corner+View.swift */; };
 		454B2D0029ED424100F8E1BA /* SingleVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CFF29ED424100F8E1BA /* SingleVideo.swift */; };
 		454B2D0229ED425200F8E1BA /* CleanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2D0129ED425200F8E1BA /* CleanButton.swift */; };
-		454B2D0A29ED437C00F8E1BA /* BlinkingSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2D0929ED437C00F8E1BA /* BlinkingSymbol.swift */; };
 		454B2D1229ED465700F8E1BA /* Armed_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2D1129ED465700F8E1BA /* Armed_iOSApp.swift */; };
 		454B2D1429ED465700F8E1BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2D1329ED465700F8E1BA /* ContentView.swift */; };
 		454B2D1629ED465800F8E1BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 454B2D1529ED465800F8E1BA /* Assets.xcassets */; };
@@ -49,15 +45,26 @@
 		454B2D2629ED467E00F8E1BA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CC229EC000C00F8E1BA /* Persistence.swift */; };
 		454B2D2929ED475400F8E1BA /* CloudPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CF229ED33D100F8E1BA /* CloudPhotosView.swift */; };
 		454B2D2D29EF373800F8E1BA /* HighPitchedAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2D2C29EF373800F8E1BA /* HighPitchedAudioPlayer.swift */; };
-		454B2D5129EF40DA00F8E1BA /* Audio+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2D5029EF40DA00F8E1BA /* Audio+Extension.swift */; };
 		456255842A006A930042A3CF /* InformationKit in Frameworks */ = {isa = PBXBuildFile; productRef = 456255832A006A930042A3CF /* InformationKit */; };
-		4569146729F338D700309A2E /* CCBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146629F338D700309A2E /* CCBackgroundModifier.swift */; };
-		4569146929F346C300309A2E /* CustomSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146829F346C300309A2E /* CustomSliders.swift */; };
-		4569146B29F346F200309A2E /* ControlCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146A29F346F200309A2E /* ControlCenterButton.swift */; };
-		4569146D29F348B800309A2E /* SirenSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146C29F348B800309A2E /* SirenSettingsView.swift */; };
 		4569146F29F3494A00309A2E /* AppStorage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146E29F3494A00309A2E /* AppStorage+Extensions.swift */; };
 		45AC27A529F7559A000320E4 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC27A429F75594000320E4 /* FloatingPanel.swift */; };
 		45AC27A629F7559A000320E4 /* FloatingPanelModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AC27A329F75594000320E4 /* FloatingPanelModifier.swift */; };
+		51E107A92CA59466000B164A /* LivePersistenceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107A62CA59466000B164A /* LivePersistenceClient.swift */; };
+		51E107AA2CA59466000B164A /* PersistenceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107A72CA59466000B164A /* PersistenceClient.swift */; };
+		51E107AD2CA59C41000B164A /* Assets in Frameworks */ = {isa = PBXBuildFile; productRef = 51E107AC2CA59C41000B164A /* Assets */; };
+		51E107AF2CA59C41000B164A /* BatteryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 51E107AE2CA59C41000B164A /* BatteryClient */; };
+		51E107B12CA59C41000B164A /* CameraClient in Frameworks */ = {isa = PBXBuildFile; productRef = 51E107B02CA59C41000B164A /* CameraClient */; };
+		51E107B32CA59C41000B164A /* PlayerClient in Frameworks */ = {isa = PBXBuildFile; productRef = 51E107B22CA59C41000B164A /* PlayerClient */; };
+		51E107B52CA59C41000B164A /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 51E107B42CA59C41000B164A /* Shared */; };
+		51E107B72CA59C41000B164A /* UI in Frameworks */ = {isa = PBXBuildFile; productRef = 51E107B62CA59C41000B164A /* UI */; };
+		51E107BA2CA5A1AB000B164A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107B92CA5A1AB000B164A /* CameraView.swift */; };
+		51E107BC2CA5A1B1000B164A /* FlashLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107BB2CA5A1B1000B164A /* FlashLights.swift */; };
+		51E107BE2CA5A1B8000B164A /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107BD2CA5A1B8000B164A /* TimerView.swift */; };
+		51E107C02CA5A1BF000B164A /* DangerOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107BF2CA5A1BF000B164A /* DangerOverlay.swift */; };
+		51E107C22CA5A1C6000B164A /* TouchIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107C12CA5A1C6000B164A /* TouchIDButton.swift */; };
+		51E107C42CA5A1CC000B164A /* ImageBufferRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107C32CA5A1CC000B164A /* ImageBufferRow.swift */; };
+		51E107C62CA5A1D4000B164A /* NotMonitoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107C52CA5A1D4000B164A /* NotMonitoringView.swift */; };
+		51E107C82CA5A209000B164A /* BufferImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107C72CA5A209000B164A /* BufferImageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,7 +77,6 @@
 		4522AA8B29E856C20056D6BA /* ArmedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmedVM.swift; sourceTree = "<group>"; };
 		4522AA8E29E8576E0056D6BA /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		4522AA9029E861A60056D6BA /* WarnTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarnTimerView.swift; sourceTree = "<group>"; };
-		4522AA9229E862410056D6BA /* CameraVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVM.swift; sourceTree = "<group>"; };
 		4526F9AF2A0B176A00CD2913 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		454032B329FF7F1F00C8C08C /* Armed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Armed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		454032B529FF7F1F00C8C08C /* Armed_watchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Armed_watchOSApp.swift; sourceTree = "<group>"; };
@@ -79,9 +85,6 @@
 		454032BC29FF7F1F00C8C08C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		454032C529FF844E00C8C08C /* Armed watchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Armed watchOS.entitlements"; sourceTree = "<group>"; };
 		454B2C8929EBC9AF00F8E1BA /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		454B2C8B29EBD92200F8E1BA /* FluidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidView.swift; sourceTree = "<group>"; };
-		454B2C9C29EBDB3500F8E1BA /* FluidGradient */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FluidGradient; path = LocalPackages/FluidGradient; sourceTree = "<group>"; };
-		454B2C9D29EBDB3C00F8E1BA /* MacControlCenterUI-main */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "MacControlCenterUI-main"; path = "LocalPackages/MacControlCenterUI-main"; sourceTree = "<group>"; };
 		454B2CC229EC000C00F8E1BA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		454B2CC829EC003D00F8E1BA /* CloudImage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CloudImage.xcdatamodel; sourceTree = "<group>"; };
 		454B2CF229ED33D100F8E1BA /* CloudPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudPhotosView.swift; sourceTree = "<group>"; };
@@ -90,7 +93,6 @@
 		454B2CFB29ED421700F8E1BA /* Corner+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Corner+View.swift"; sourceTree = "<group>"; };
 		454B2CFF29ED424100F8E1BA /* SingleVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVideo.swift; sourceTree = "<group>"; };
 		454B2D0129ED425200F8E1BA /* CleanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanButton.swift; sourceTree = "<group>"; };
-		454B2D0929ED437C00F8E1BA /* BlinkingSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingSymbol.swift; sourceTree = "<group>"; };
 		454B2D0F29ED465700F8E1BA /* Armed iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Armed iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		454B2D1129ED465700F8E1BA /* Armed_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Armed_iOSApp.swift; sourceTree = "<group>"; };
 		454B2D1329ED465700F8E1BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,15 +101,21 @@
 		454B2D1F29ED465800F8E1BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		454B2D2A29ED476300F8E1BA /* Armed iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Armed iOS.entitlements"; sourceTree = "<group>"; };
 		454B2D2C29EF373800F8E1BA /* HighPitchedAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighPitchedAudioPlayer.swift; sourceTree = "<group>"; };
-		454B2D5029EF40DA00F8E1BA /* Audio+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio+Extension.swift"; sourceTree = "<group>"; };
 		4562557C2A0054F00042A3CF /* Armed-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Armed-macOS-Info.plist"; sourceTree = "<group>"; };
-		4569146629F338D700309A2E /* CCBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCBackgroundModifier.swift; sourceTree = "<group>"; };
-		4569146829F346C300309A2E /* CustomSliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSliders.swift; sourceTree = "<group>"; };
-		4569146A29F346F200309A2E /* ControlCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCenterButton.swift; sourceTree = "<group>"; };
-		4569146C29F348B800309A2E /* SirenSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenSettingsView.swift; sourceTree = "<group>"; };
 		4569146E29F3494A00309A2E /* AppStorage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+Extensions.swift"; sourceTree = "<group>"; };
 		45AC27A329F75594000320E4 /* FloatingPanelModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelModifier.swift; sourceTree = "<group>"; };
 		45AC27A429F75594000320E4 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
+		51A7507F2CA5860900C852BA /* ArmedKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ArmedKit; sourceTree = "<group>"; };
+		51E107A62CA59466000B164A /* LivePersistenceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePersistenceClient.swift; sourceTree = "<group>"; };
+		51E107A72CA59466000B164A /* PersistenceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceClient.swift; sourceTree = "<group>"; };
+		51E107B92CA5A1AB000B164A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		51E107BB2CA5A1B1000B164A /* FlashLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashLights.swift; sourceTree = "<group>"; };
+		51E107BD2CA5A1B8000B164A /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		51E107BF2CA5A1BF000B164A /* DangerOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DangerOverlay.swift; sourceTree = "<group>"; };
+		51E107C12CA5A1C6000B164A /* TouchIDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDButton.swift; sourceTree = "<group>"; };
+		51E107C32CA5A1CC000B164A /* ImageBufferRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBufferRow.swift; sourceTree = "<group>"; };
+		51E107C52CA5A1D4000B164A /* NotMonitoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotMonitoringView.swift; sourceTree = "<group>"; };
+		51E107C72CA5A209000B164A /* BufferImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferImageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +123,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51E107B72CA59C41000B164A /* UI in Frameworks */,
+				51E107B32CA59C41000B164A /* PlayerClient in Frameworks */,
+				51E107AD2CA59C41000B164A /* Assets in Frameworks */,
 				456255842A006A930042A3CF /* InformationKit in Frameworks */,
 				4522AA8F29E8576E0056D6BA /* IOKit.framework in Frameworks */,
-				454B2C9F29EBDB4500F8E1BA /* FluidGradient in Frameworks */,
+				51E107AF2CA59C41000B164A /* BatteryClient in Frameworks */,
+				51E107B52CA59C41000B164A /* Shared in Frameworks */,
+				51E107B12CA59C41000B164A /* CameraClient in Frameworks */,
 				454B2CA129EBDB4700F8E1BA /* MacControlCenterUI in Frameworks */,
 				454483512A0AE2FB0080EA38 /* Defaults in Frameworks */,
 			);
@@ -145,9 +158,9 @@
 		4522AA6F29E856540056D6BA = {
 			isa = PBXGroup;
 			children = (
+				51A7507F2CA5860900C852BA /* ArmedKit */,
 				4562557C2A0054F00042A3CF /* Armed-macOS-Info.plist */,
 				454B2D2429ED466E00F8E1BA /* Shared */,
-				454B2C9A29EBDB1700F8E1BA /* Packages */,
 				4522AA7A29E856540056D6BA /* Armed */,
 				454B2D1029ED465700F8E1BA /* Armed iOS */,
 				454032B429FF7F1F00C8C08C /* Armed watchOS */,
@@ -169,8 +182,8 @@
 		4522AA7A29E856540056D6BA /* Armed */ = {
 			isa = PBXGroup;
 			children = (
+				51E107AB2CA59468000B164A /* Dependencies */,
 				4522AA7B29E856540056D6BA /* ArmedApp.swift */,
-				4569146529F338BE00309A2E /* ViewModifiers */,
 				454B2CF429ED370900F8E1BA /* ViewExtensions */,
 				454B2C8029EACD2D00F8E1BA /* Views */,
 				454B2C7F29EACD2700F8E1BA /* ViewModels */,
@@ -222,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				454B2D2C29EF373800F8E1BA /* HighPitchedAudioPlayer.swift */,
-				4522AA9229E862410056D6BA /* CameraVM.swift */,
 				4522AA8B29E856C20056D6BA /* ArmedVM.swift */,
 			);
 			path = ViewModels;
@@ -238,21 +250,11 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		454B2C9A29EBDB1700F8E1BA /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				454B2C9C29EBDB3500F8E1BA /* FluidGradient */,
-				454B2C9D29EBDB3C00F8E1BA /* MacControlCenterUI-main */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		454B2CF429ED370900F8E1BA /* ViewExtensions */ = {
 			isa = PBXGroup;
 			children = (
 				454B2CF529ED371A00F8E1BA /* Image+Data.swift */,
 				454B2CFB29ED421700F8E1BA /* Corner+View.swift */,
-				454B2D5029EF40DA00F8E1BA /* Audio+Extension.swift */,
 				4526F9AF2A0B176A00CD2913 /* Double+Extension.swift */,
 			);
 			path = ViewExtensions;
@@ -273,8 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				45AC27A229F75589000320E4 /* Panel */,
-				454B2C8B29EBD92200F8E1BA /* FluidView.swift */,
-				4522AA9029E861A60056D6BA /* WarnTimerView.swift */,
+				51E107B82CA5A1A1000B164A /* WarnTimer */,
 			);
 			path = FloatingWindow;
 			sourceTree = "<group>";
@@ -283,10 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				454B2C8929EBC9AF00F8E1BA /* MenuView.swift */,
-				4569146C29F348B800309A2E /* SirenSettingsView.swift */,
-				454B2D0929ED437C00F8E1BA /* BlinkingSymbol.swift */,
-				4569146829F346C300309A2E /* CustomSliders.swift */,
-				4569146A29F346F200309A2E /* ControlCenterButton.swift */,
 			);
 			path = Menubar;
 			sourceTree = "<group>";
@@ -294,7 +291,6 @@
 		454B2D0829ED433F00F8E1BA /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				454B2CC729EC003D00F8E1BA /* ArmedModels.xcdatamodeld */,
 				454B2CC229EC000C00F8E1BA /* Persistence.swift */,
 			);
 			path = CoreData;
@@ -338,14 +334,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4569146529F338BE00309A2E /* ViewModifiers */ = {
-			isa = PBXGroup;
-			children = (
-				4569146629F338D700309A2E /* CCBackgroundModifier.swift */,
-			);
-			path = ViewModifiers;
-			sourceTree = "<group>";
-		};
 		45AC27A229F75589000320E4 /* Panel */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +341,40 @@
 				45AC27A329F75594000320E4 /* FloatingPanelModifier.swift */,
 			);
 			path = Panel;
+			sourceTree = "<group>";
+		};
+		51E107A82CA59466000B164A /* PersistenceClient */ = {
+			isa = PBXGroup;
+			children = (
+				454B2CC729EC003D00F8E1BA /* ArmedModels.xcdatamodeld */,
+				51E107A62CA59466000B164A /* LivePersistenceClient.swift */,
+				51E107A72CA59466000B164A /* PersistenceClient.swift */,
+			);
+			path = PersistenceClient;
+			sourceTree = "<group>";
+		};
+		51E107AB2CA59468000B164A /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				51E107A82CA59466000B164A /* PersistenceClient */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		51E107B82CA5A1A1000B164A /* WarnTimer */ = {
+			isa = PBXGroup;
+			children = (
+				51E107C72CA5A209000B164A /* BufferImageModel.swift */,
+				51E107C52CA5A1D4000B164A /* NotMonitoringView.swift */,
+				51E107C32CA5A1CC000B164A /* ImageBufferRow.swift */,
+				51E107C12CA5A1C6000B164A /* TouchIDButton.swift */,
+				51E107BF2CA5A1BF000B164A /* DangerOverlay.swift */,
+				51E107BD2CA5A1B8000B164A /* TimerView.swift */,
+				51E107BB2CA5A1B1000B164A /* FlashLights.swift */,
+				51E107B92CA5A1AB000B164A /* CameraView.swift */,
+				4522AA9029E861A60056D6BA /* WarnTimerView.swift */,
+			);
+			path = WarnTimer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,10 +394,15 @@
 			);
 			name = "Armed macOS";
 			packageProductDependencies = (
-				454B2C9E29EBDB4500F8E1BA /* FluidGradient */,
 				454B2CA029EBDB4700F8E1BA /* MacControlCenterUI */,
 				456255832A006A930042A3CF /* InformationKit */,
 				454483502A0AE2FB0080EA38 /* Defaults */,
+				51E107AC2CA59C41000B164A /* Assets */,
+				51E107AE2CA59C41000B164A /* BatteryClient */,
+				51E107B02CA59C41000B164A /* CameraClient */,
+				51E107B22CA59C41000B164A /* PlayerClient */,
+				51E107B42CA59C41000B164A /* Shared */,
+				51E107B62CA59C41000B164A /* UI */,
 			);
 			productName = Armed;
 			productReference = 4522AA7829E856540056D6BA /* Armed macOS.app */;
@@ -503,30 +530,32 @@
 			files = (
 				454B2CC329EC000C00F8E1BA /* Persistence.swift in Sources */,
 				454B2CF329ED33D100F8E1BA /* CloudPhotosView.swift in Sources */,
+				51E107A92CA59466000B164A /* LivePersistenceClient.swift in Sources */,
+				51E107AA2CA59466000B164A /* PersistenceClient.swift in Sources */,
 				45AC27A529F7559A000320E4 /* FloatingPanel.swift in Sources */,
 				454B2CD129ED318A00F8E1BA /* ArmedModels.xcdatamodeld in Sources */,
 				454B2D2D29EF373800F8E1BA /* HighPitchedAudioPlayer.swift in Sources */,
 				454B2C8A29EBC9AF00F8E1BA /* MenuView.swift in Sources */,
-				454B2D5129EF40DA00F8E1BA /* Audio+Extension.swift in Sources */,
 				454B2CFC29ED421700F8E1BA /* Corner+View.swift in Sources */,
 				454B2D0029ED424100F8E1BA /* SingleVideo.swift in Sources */,
 				45AC27A629F7559A000320E4 /* FloatingPanelModifier.swift in Sources */,
-				4569146D29F348B800309A2E /* SirenSettingsView.swift in Sources */,
-				454B2C8C29EBD92200F8E1BA /* FluidView.swift in Sources */,
+				51E107BE2CA5A1B8000B164A /* TimerView.swift in Sources */,
+				51E107C62CA5A1D4000B164A /* NotMonitoringView.swift in Sources */,
 				4522AA7E29E856540056D6BA /* ContentView.swift in Sources */,
 				454B2D0229ED425200F8E1BA /* CleanButton.swift in Sources */,
-				454B2D0A29ED437C00F8E1BA /* BlinkingSymbol.swift in Sources */,
 				4522AA9129E861A60056D6BA /* WarnTimerView.swift in Sources */,
-				4522AA9329E862410056D6BA /* CameraVM.swift in Sources */,
 				4569146F29F3494A00309A2E /* AppStorage+Extensions.swift in Sources */,
+				51E107BA2CA5A1AB000B164A /* CameraView.swift in Sources */,
+				51E107C02CA5A1BF000B164A /* DangerOverlay.swift in Sources */,
 				4522AA8C29E856C20056D6BA /* ArmedVM.swift in Sources */,
 				4526F9B02A0B176A00CD2913 /* Double+Extension.swift in Sources */,
+				51E107C42CA5A1CC000B164A /* ImageBufferRow.swift in Sources */,
+				51E107C22CA5A1C6000B164A /* TouchIDButton.swift in Sources */,
 				454B2CF629ED371A00F8E1BA /* Image+Data.swift in Sources */,
-				4569146B29F346F200309A2E /* ControlCenterButton.swift in Sources */,
 				454B2CFA29ED420300F8E1BA /* MessageBanner.swift in Sources */,
-				4569146929F346C300309A2E /* CustomSliders.swift in Sources */,
 				4522AA7C29E856540056D6BA /* ArmedApp.swift in Sources */,
-				4569146729F338D700309A2E /* CCBackgroundModifier.swift in Sources */,
+				51E107BC2CA5A1B1000B164A /* FlashLights.swift in Sources */,
+				51E107C82CA5A209000B164A /* BufferImageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -964,10 +993,6 @@
 			package = 4544834F2A0AE2FB0080EA38 /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
 		};
-		454B2C9E29EBDB4500F8E1BA /* FluidGradient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FluidGradient;
-		};
 		454B2CA029EBDB4700F8E1BA /* MacControlCenterUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MacControlCenterUI;
@@ -976,6 +1001,30 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 456255822A006A930042A3CF /* XCRemoteSwiftPackageReference "InformationKit" */;
 			productName = InformationKit;
+		};
+		51E107AC2CA59C41000B164A /* Assets */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Assets;
+		};
+		51E107AE2CA59C41000B164A /* BatteryClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BatteryClient;
+		};
+		51E107B02CA59C41000B164A /* CameraClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CameraClient;
+		};
+		51E107B22CA59C41000B164A /* PlayerClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PlayerClient;
+		};
+		51E107B42CA59C41000B164A /* Shared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Shared;
+		};
+		51E107B62CA59C41000B164A /* UI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UI;
 		};
 /* End XCSwiftPackageProductDependency section */
 

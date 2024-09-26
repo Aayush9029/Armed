@@ -1,34 +1,113 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Defaults",
-        "repositoryURL": "https://github.com/sindresorhus/Defaults.git",
-        "state": {
-          "branch": "main",
-          "revision": "488ff7dd719cf18a347dcab00078483f28ee52f8",
-          "version": null
-        }
-      },
-      {
-        "package": "InformationKit",
-        "repositoryURL": "https://github.com/Aayush9029/InformationKit.git",
-        "state": {
-          "branch": "main",
-          "revision": "fc408cd8692cd76bf1b9f73441bad20511a64076",
-          "version": null
-        }
-      },
-      {
-        "package": "MenuBarExtraAccess",
-        "repositoryURL": "https://github.com/orchetect/MenuBarExtraAccess",
-        "state": {
-          "branch": null,
-          "revision": "24c86e4de6664aefb8b29b47fd664cf833c49ad2",
-          "version": "1.0.3"
-        }
+  "pins" : [
+    {
+      "identity" : "combine-schedulers",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/combine-schedulers",
+      "state" : {
+        "revision" : "9fa31f4403da54855f1e2aeaeff478f4f0e40b13",
+        "version" : "1.0.2"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "defaults",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/Defaults.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "488ff7dd719cf18a347dcab00078483f28ee52f8"
+      }
+    },
+    {
+      "identity" : "informationkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Aayush9029/InformationKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "fc408cd8692cd76bf1b9f73441bad20511a64076"
+      }
+    },
+    {
+      "identity" : "maccontrolcenterui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/orchetect/MacControlCenterUI",
+      "state" : {
+        "revision" : "696bca498105b3eed5ea939fcb7d493747a3c2fd",
+        "version" : "2.0.2"
+      }
+    },
+    {
+      "identity" : "menubarextraaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/orchetect/MenuBarExtraAccess",
+      "state" : {
+        "revision" : "24c86e4de6664aefb8b29b47fd664cf833c49ad2",
+        "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "swift-async-algorithms",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-async-algorithms",
+      "state" : {
+        "revision" : "6ae9a051f76b81cc668305ceed5b0e0a7fd93d20",
+        "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "swift-clocks",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-clocks",
+      "state" : {
+        "revision" : "b9b24b69e2adda099a1fa381cda1eeec272d5b53",
+        "version" : "1.0.5"
+      }
+    },
+    {
+      "identity" : "swift-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-collections.git",
+      "state" : {
+        "revision" : "671108c96644956dddcd89dd59c203dcdb36cec7",
+        "version" : "1.1.4"
+      }
+    },
+    {
+      "identity" : "swift-concurrency-extras",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-concurrency-extras",
+      "state" : {
+        "revision" : "6054df64b55186f08b6d0fd87152081b8ad8d613",
+        "version" : "1.2.0"
+      }
+    },
+    {
+      "identity" : "swift-dependencies",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-dependencies",
+      "state" : {
+        "revision" : "0fc0255e780bf742abeef29dec80924f5f0ae7b9",
+        "version" : "1.4.1"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
+      }
+    },
+    {
+      "identity" : "xctest-dynamic-overlay",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
+      "state" : {
+        "revision" : "27d767d643fa2cf083d0a73d74fa84cacb53e85c",
+        "version" : "1.4.1"
+      }
+    }
+  ],
+  "version" : 2
 }

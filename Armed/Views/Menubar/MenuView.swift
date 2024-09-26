@@ -7,12 +7,14 @@
 
 import AppKit
 import Defaults
+import Dependencies
 import MacControlCenterUI
 import SwiftUI
+import UI
 
 struct MenuView: View {
     @EnvironmentObject var armedVM: ArmedVM
-    @EnvironmentObject var cameraVM: CameraVM
+
     @Binding var isMenuPresented: Bool
 
     let persistenceController = PersistenceController.shared
@@ -46,7 +48,7 @@ struct MenuView: View {
                                         .foregroundStyle(.secondary)
                                 }
                             }
-                            if !cameraVM.hasCameraAccess() {
+                            if !armedVM.hasCameraAccess() {
                                 EnableCameraLabel()
                             }
 
@@ -69,15 +71,18 @@ struct MenuView: View {
                                             icon: armedVM.armed ? "touchid" : "shield.lefthalf.filled",
                                             tint: .red
                                         ) {
-                                            if armedVM.armed {
-                                                if armedVM.authenticate() && !showInDock {
-                                                    NSApp.setActivationPolicy(.regular)
+                                            Task {
+                                                if armedVM.armed {
+                                                    let success = await armedVM.authenticate()
+                                                    if success && !showInDock {
+                                                        NSApp.setActivationPolicy(.regular)
+                                                    }
+                                                } else {
+                                                    if showInDock {
+                                                        NSApp.setActivationPolicy(.prohibited)
+                                                    }
+                                                    armedVM.armed.toggle()
                                                 }
-                                            } else {
-                                                if showInDock {
-                                                    NSApp.setActivationPolicy(.prohibited)
-                                                }
-                                                armedVM.armed.toggle()
                                             }
                                         }
                                     }
@@ -90,8 +95,7 @@ struct MenuView: View {
                             }
 
                             if !armedVM.armed {
-                                SirenSlider()
-                                    .environmentObject(armedVM)
+                                SirenSlider(sirenTimer: $armedVM.sirenTimer) {}
                             }
 
                             if !armedVM.armed {
@@ -136,15 +140,19 @@ struct MenuView: View {
                 .floatingPanel(isPresented: $armedVM.armed, content: {
                     WarnTimerView()
                         .environmentObject(armedVM)
-                        .environmentObject(cameraVM)
 
                 })
                 .onChange(of: armedVM.armed) { newValue in
-                    if !cameraVM.hasCameraAccess() { print("Need access to camera"); return }
-                    if newValue {
-                        cameraVM.startCamera()
-                    } else {
-                        cameraVM.stopCamera()
+                    Task {
+                        if await armedVM.hasCameraAccess() {
+                            print("Need access to camera")
+                            return
+                        }
+                        if newValue {
+                            armedVM.startCamera()
+                        } else {
+                            armedVM.stopCamera()
+                        }
                     }
                 }
             }

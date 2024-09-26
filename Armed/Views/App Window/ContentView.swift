@@ -7,7 +7,6 @@
 
 import AppKit
 import Defaults
-import FluidGradient
 import InformationKit
 import MacControlCenterUI
 import MenuBarExtraAccess
@@ -15,22 +14,21 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.openURL) var openURL
-    @EnvironmentObject var cameraVM: CameraVM
     @EnvironmentObject var armedVM: ArmedVM
     @Binding var isMenuPresented: Bool
     @Default(.showInDock) var showInDock
-    @State private var confrimHide: Bool = false
+    @State private var confirmHide: Bool = false
+    @State private var hasCameraAccess: Bool = true
+
     var body: some View {
         NavigationStack {
             VStack {
-                if !cameraVM.hasCameraAccess() {
+                if !hasCameraAccess {
                     MessageBanner(
                         "Camera Access Required",
                         symbol: "camera.fill.badge.ellipsis",
                         detail: "Access to camera is required to capture images and sync with iOS app. Information will never leave your iCloud account."
-                    ) {
-                        CameraVM.showCameraSettingsAlert()
-                    }
+                    ) {}
                 }
                 VStack(spacing: 12) {
                     HStack {
@@ -52,10 +50,10 @@ struct ContentView: View {
                                     .font(.callout)
                                     .multilineTextAlignment(.center)
                             }
-                            
+
                             HStack { Spacer() }
                             Text("Show menu bar app")
-                            
+
                             Toggle("", isOn: $isMenuPresented)
                                 .toggleStyle(.switch)
                                 .labelsHidden()
@@ -72,19 +70,19 @@ struct ContentView: View {
                                 .stroke(.tertiary, lineWidth: 2)
                         )
                     }
-                    
+
                     SingleVideo(VideoModel.video)
-                    
+
                     Spacer()
-                    
+
                     CustomCleanButton("Hide Window\(showInDock ? " + Dock Icon" : "")", symbol: "dock.rectangle", tint: .blue) {
                         if showInDock {
-                            confrimHide.toggle()
+                            confirmHide.toggle()
                         } else {
                             NSApp.keyWindow?.close()
                         }
                     }
-                    .alert(isPresented: $confrimHide) {
+                    .alert(isPresented: $confirmHide) {
                         Alert(
                             title: Text("Hide Armed Dock icon."),
                             message: Text("This will hide the Armed app icon from the dock. (recommended)"),
@@ -96,7 +94,7 @@ struct ContentView: View {
                             secondaryButton: .cancel()
                         )
                     }
-                
+
                     HStack {
                         Text("To view this window again, simply re-launch Armed app.")
                         Spacer()
@@ -118,6 +116,9 @@ struct ContentView: View {
                 }
                 .padding(12)
             }
+            .task {
+                hasCameraAccess = await armedVM.hasCameraAccess()
+            }
         }
         .frame(width: 320, height: 640)
         .background(VisualEffect.popoverWindow().ignoresSafeArea())
@@ -129,7 +130,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(isMenuPresented: .constant(false))
             .background(.black.opacity(0.125))
             .environmentObject(ArmedVM())
-            .environmentObject(CameraVM())
             .frame(width: 320, height: 640)
     }
 }

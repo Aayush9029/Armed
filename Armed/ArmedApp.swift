@@ -13,7 +13,6 @@ import SwiftUI
 @main
 struct ArmedApp: App {
     @StateObject var armedVM: ArmedVM = .init()
-    @StateObject var cameraVM: CameraVM = .init()
 
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
@@ -23,7 +22,6 @@ struct ArmedApp: App {
         Window("Armed Window", id: "armed-window") {
             ContentView(isMenuPresented: $isMenuPresented)
                 .environmentObject(armedVM)
-                .environmentObject(cameraVM)
         }
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
@@ -31,11 +29,14 @@ struct ArmedApp: App {
             CommandGroup(replacing: .appInfo) {
                 // Create a custom Quit menu item with a custom action.
                 Button(self.armedVM.armed ? "Authenticate" : "Quit Armed") {
-                    if !self.armedVM.armed { NSApp.terminate(nil) } else {
-                        let status = self.armedVM.authenticate()
-                        print(status)
-                        if status {
-                            NSApp.terminate(nil)
+                    if !self.armedVM.armed { NSApp.terminate(nil) }
+                    else {
+                        Task {
+                            let status = await self.armedVM.authenticate()
+                            print(status)
+                            if status {
+                                NSApp.terminate(nil)
+                            }
                         }
                     }
                 }
@@ -46,7 +47,6 @@ struct ArmedApp: App {
             MenuView(isMenuPresented: $isMenuPresented)
                 .frame(width: 320, height: 380)
                 .environmentObject(armedVM)
-                .environmentObject(cameraVM)
 
         }) {
             Label("Armed", systemImage: armedVM.armed ? "lock.shield.fill" : "lock.shield")
