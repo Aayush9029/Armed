@@ -39,7 +39,6 @@
 		454B2D2529ED467C00F8E1BA /* ArmedModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CC729EC003D00F8E1BA /* ArmedModels.xcdatamodeld */; };
 		454B2D2629ED467E00F8E1BA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CC229EC000C00F8E1BA /* Persistence.swift */; };
 		454B2D2929ED475400F8E1BA /* CloudPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B2CF229ED33D100F8E1BA /* CloudPhotosView.swift */; };
-		456255842A006A930042A3CF /* InformationKit in Frameworks */ = {isa = PBXBuildFile; productRef = 456255832A006A930042A3CF /* InformationKit */; };
 		4569146F29F3494A00309A2E /* AppStorage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569146E29F3494A00309A2E /* AppStorage+Extensions.swift */; };
 		513CB1182CA6788B0055A31F /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513CB1172CA6788B0055A31F /* WindowController.swift */; };
 		51E107A92CA59466000B164A /* LivePersistenceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E107A62CA59466000B164A /* LivePersistenceClient.swift */; };
@@ -91,6 +90,7 @@
 		4562557C2A0054F00042A3CF /* Armed-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Armed-macOS-Info.plist"; sourceTree = "<group>"; };
 		4569146E29F3494A00309A2E /* AppStorage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+Extensions.swift"; sourceTree = "<group>"; };
 		513CB1172CA6788B0055A31F /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		513CB11A2CA68B230055A31F /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		51A7507F2CA5860900C852BA /* ArmedKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ArmedKit; sourceTree = "<group>"; };
 		51E107A62CA59466000B164A /* LivePersistenceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePersistenceClient.swift; sourceTree = "<group>"; };
 		51E107A72CA59466000B164A /* PersistenceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceClient.swift; sourceTree = "<group>"; };
@@ -112,7 +112,6 @@
 				51E107B72CA59C41000B164A /* UI in Frameworks */,
 				51E107B32CA59C41000B164A /* PlayerClient in Frameworks */,
 				51E107AD2CA59C41000B164A /* Assets in Frameworks */,
-				456255842A006A930042A3CF /* InformationKit in Frameworks */,
 				4522AA8F29E8576E0056D6BA /* IOKit.framework in Frameworks */,
 				51E107AF2CA59C41000B164A /* BatteryClient in Frameworks */,
 				51E107B52CA59C41000B164A /* Shared in Frameworks */,
@@ -144,6 +143,7 @@
 		4522AA6F29E856540056D6BA = {
 			isa = PBXGroup;
 			children = (
+				513CB1192CA68B0C0055A31F /* ci_scripts */,
 				51A7507F2CA5860900C852BA /* ArmedKit */,
 				4562557C2A0054F00042A3CF /* Armed-macOS-Info.plist */,
 				454B2D2429ED466E00F8E1BA /* Shared */,
@@ -315,6 +315,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		513CB1192CA68B0C0055A31F /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				513CB11A2CA68B230055A31F /* ci_post_clone.sh */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
 		51E107A82CA59466000B164A /* PersistenceClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,7 +374,6 @@
 			name = "Armed macOS";
 			packageProductDependencies = (
 				454B2CA029EBDB4700F8E1BA /* MacControlCenterUI */,
-				456255832A006A930042A3CF /* InformationKit */,
 				454483502A0AE2FB0080EA38 /* Defaults */,
 				51E107AC2CA59C41000B164A /* Assets */,
 				51E107AE2CA59C41000B164A /* BatteryClient */,
@@ -450,7 +457,6 @@
 			);
 			mainGroup = 4522AA6F29E856540056D6BA;
 			packageReferences = (
-				456255822A006A930042A3CF /* XCRemoteSwiftPackageReference "InformationKit" */,
 				4544834F2A0AE2FB0080EA38 /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = 4522AA7929E856540056D6BA /* Products */;
@@ -931,14 +937,6 @@
 				kind = branch;
 			};
 		};
-		456255822A006A930042A3CF /* XCRemoteSwiftPackageReference "InformationKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Aayush9029/InformationKit.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -960,11 +958,6 @@
 		454B2CA029EBDB4700F8E1BA /* MacControlCenterUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MacControlCenterUI;
-		};
-		456255832A006A930042A3CF /* InformationKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 456255822A006A930042A3CF /* XCRemoteSwiftPackageReference "InformationKit" */;
-			productName = InformationKit;
 		};
 		51E107AC2CA59C41000B164A /* Assets */ = {
 			isa = XCSwiftPackageProductDependency;

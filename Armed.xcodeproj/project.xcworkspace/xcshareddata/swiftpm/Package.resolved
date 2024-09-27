@@ -1,4 +1,5 @@
 {
+  "originHash" : "a307d26a5799b05c64cb96076668a300d3cce0d7e68ca17b553636207ecb0c71",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -16,15 +17,6 @@
       "state" : {
         "branch" : "main",
         "revision" : "488ff7dd719cf18a347dcab00078483f28ee52f8"
-      }
-    },
-    {
-      "identity" : "informationkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Aayush9029/InformationKit.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "fc408cd8692cd76bf1b9f73441bad20511a64076"
       }
     },
     {
@@ -109,5 +101,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

@@ -2,7 +2,6 @@ import AppKit
 import CameraClient
 import Defaults
 import Dependencies
-import InformationKit
 import MacControlCenterUI
 import MenuBarExtraAccess
 import SwiftUI
@@ -21,7 +20,6 @@ struct ContentView: View {
             VStack {
                 VStack(spacing: 12) {
                     headerView
-                    informationBannerView
                     VStack {
                         menuBarToggleView
                             
@@ -60,11 +58,7 @@ struct ContentView: View {
             cameraClient.openCameraSettings()
         }
     }
-    
-    private var informationBannerView: some View {
-        InformationBanner(style: .init(showBorder: true))
-    }
-    
+
     private var menuBarToggleView: some View {
         HStack {
             VStack {
