@@ -37,7 +37,6 @@ struct CloudPhotosView: View {
                     }
                 }
             }
-            .navigationTitle(Text("Cloud Photos"))
         }
         .alert(isPresented: $confrimDelete) {
             Alert(title: Text("Delete All"),
@@ -87,14 +86,12 @@ struct CloudPhotosView: View {
     }
 }
 
-struct CloudPhotosView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            CloudPhotosView()
-                .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-        }
-        .frame(width: 360, height: 540)
+#Preview {
+    NavigationStack {
+        CloudPhotosView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
+    .frame(width: 360, height: 540)
 }
 
 struct SingleStoredImage: View {

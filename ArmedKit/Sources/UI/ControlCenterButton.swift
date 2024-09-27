@@ -1,26 +1,12 @@
-//
-//  ControlCenterButton.swift
-//  ArmedKit
-//
-//  Created by yush on 9/26/24.
-//
-
-//
-//  ControlCenterButton.swift
-//  Armed
-//
-//  Created by Aayush Pokharel on 2023-04-21.
-//
-
 import SwiftUI
 
 public struct ControlCenterButton: View {
-    let value: Bool
-    let title: String
-    let icon: String
-    let tint: Color
-    let size: Font
-    var action: () -> Void
+    private let value: Bool
+    private let title: String
+    private let icon: String
+    private let tint: Color
+    private let size: Font
+    private let action: () -> Void
 
     public init(
         _ value: Bool,
@@ -39,25 +25,35 @@ public struct ControlCenterButton: View {
     }
 
     public var body: some View {
-        Button {
-            action()
-        } label: {
-            VStack {
-                Image(systemName: icon)
-                    .imageScale(.large)
-                    .shadow(color: tint.opacity(0.25), radius: value ? 2 : 0)
-                    .symbolRenderingMode(.hierarchical)
-                Text(title)
-                    .multilineTextAlignment(.center)
-                    .font(size)
-                    .frame(minHeight: 28)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .foregroundColor(value ? tint : .primary)
-            .ccGlassButton(filled: value, hoverable: true)
+        Button(action: action) {
+            buttonContent
         }
         .buttonStyle(.plain)
         .buttonBorderShape(.roundedRectangle)
+    }
+
+    private var buttonContent: some View {
+        VStack {
+            iconView
+            titleView
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .foregroundColor(value ? tint : .primary)
+        .ccGlassButton(filled: value, hoverable: true)
+    }
+
+    private var iconView: some View {
+        Image(systemName: icon)
+            .imageScale(.large)
+            .shadow(color: tint.opacity(0.25), radius: value ? 2 : 0)
+            .symbolRenderingMode(.hierarchical)
+    }
+
+    private var titleView: some View {
+        Text(title)
+            .multilineTextAlignment(.center)
+            .font(size)
+            .frame(minHeight: 28)
     }
 }
 

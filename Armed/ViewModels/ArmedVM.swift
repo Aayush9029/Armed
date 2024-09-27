@@ -24,7 +24,7 @@ class ArmedVM: ObservableObject {
     @Published var armed: Bool = false
     @Published var isConnected: Bool = false
     @Published var showFrequencyPopover: Bool = false
-    @Published var hasCameraAccess: Bool = false
+    @Published var hasCameraAccess: Bool = true
 
     @Default(.sirenTimer) private var sirenTimer
     @Default(.siren) private var siren

@@ -15,31 +15,27 @@ struct WarnTimerView: View {
 
     var body: some View {
         ZStack {
-            if armedVM.armed {
-                if !armedVM.isConnected {
-                    ZStack {
-                        FlashLights()
-                        TimerView(inputTime: sirenTimer)
-                    }
-                    .ignoresSafeArea()
-                } else {
-                    Group {
-                        CameraView()
-                            .blur(radius: 16)
-                            .ignoresSafeArea()
-                    }
-                    VStack {
-                        DangerOverlay(message)
-                        if !imageBuffer.isEmpty {
-                            ImageBufferRow(imageBuffer)
-                        }
-                        TouchIDButton()
-                            .environmentObject(armedVM)
-                    }
-                    .padding()
+            if !armedVM.isConnected {
+                ZStack {
+                    FlashLights()
+                    TimerView(inputTime: sirenTimer)
                 }
+                .ignoresSafeArea()
             } else {
-                NotMonitoringView()
+                Group {
+                    CameraView()
+                        .blur(radius: 16)
+                        .ignoresSafeArea()
+                }
+                VStack {
+                    DangerOverlay(message)
+                    if !imageBuffer.isEmpty {
+                        ImageBufferRow(imageBuffer)
+                    }
+                    TouchIDButton()
+                        .environmentObject(armedVM)
+                }
+                .padding()
             }
         }
         .frame(

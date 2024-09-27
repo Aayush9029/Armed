@@ -8,7 +8,8 @@ import UI
 struct MenuView: View {
     @EnvironmentObject var armedVM: ArmedVM
     @Binding var isMenuPresented: Bool
-    
+    @State private var windowController: ScreenSaverWindowController<AnyView>?
+
     let persistenceController = PersistenceController.shared
     
     @Dependency(\.playerClient) var playerClient
@@ -32,9 +33,6 @@ struct MenuView: View {
                     if !armedVM.armed {
                         additionalOptions
                     }
-                }
-                .floatingPanel(isPresented: $armedVM.armed) {
-                    WarnTimerView().environmentObject(armedVM)
                 }
                 .onChange(of: armedVM.armed, perform: handleArmedStateChange)
             }
@@ -133,7 +131,7 @@ struct MenuView: View {
                     print("Playing demo")
                     playerClient.playDemo()
                 }
-                .padding([.bottom, .trailing], 12)
+//                .padding([.bottom, .trailing], 12)
             } label: {
                 SirenSlider(sirenTimer: $sirenTimer)
             }
@@ -145,10 +143,11 @@ struct MenuView: View {
     }
     
     private var cloudImagesLink: some View {
-        NavigationLink(destination: CloudPhotosView()
-            .padding(.trailing, 12)
-            .environment(\.managedObjectContext, persistenceController.container.viewContext)
-        ) {
+        NavigationLink {
+            CloudPhotosView()
+                .padding(.trailing, 12)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+        } label: {
             HStack {
                 Label("Cloud Images", systemImage: "icloud")
                 Spacer()
@@ -206,8 +205,13 @@ struct MenuView: View {
             
             if newValue {
                 armedVM.startCamera()
+                windowController = .init(
+                    rootView: AnyView(WarnTimerView().environmentObject(armedVM))
+                )
+                
             } else {
                 armedVM.stopCamera()
+                windowController?.close()
             }
         }
     }

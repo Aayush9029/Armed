@@ -12,6 +12,7 @@ struct ArmedApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(isMenuPresented: $isMenuPresented)
+                .frame(width: 420, height: 640)
                 .environmentObject(armedVM)
         }
         .windowStyle(.hiddenTitleBar)
@@ -40,7 +41,7 @@ struct ArmedApp: App {
 
     private var menuBarContent: some View {
         MenuView(isMenuPresented: $isMenuPresented)
-            .frame(width: 320, height: 380)
+            .frame(width: 320, height: 420)
             .environmentObject(armedVM)
     }
 

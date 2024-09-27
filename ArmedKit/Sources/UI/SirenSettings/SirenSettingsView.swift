@@ -22,6 +22,7 @@ public struct SirenSettingsView: View {
 
     public var body: some View {
         VStack {
+            Spacer()
             WaveformView(
                 topFrequency: topFrequency,
                 bottomFrequency: bottomFrequency,
@@ -29,11 +30,14 @@ public struct SirenSettingsView: View {
                 playing: $playing,
                 playingAction: playingAction
             )
+            .frame(height: 128)
+            Spacer()
 
             FrequencyControlsView(
                 topFrequency: $topFrequency,
                 bottomFrequency: $bottomFrequency
             )
+            .padding()
         }
     }
 }
