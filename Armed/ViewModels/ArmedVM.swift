@@ -5,94 +5,117 @@
 //  Created by Aayush Pokharel on 2023-04-13.
 //
 
+import BatteryClient
+import CameraClient
 import Combine
 import Defaults
-import IOKit.ps
+import Dependencies
 import LocalAuthentication
+import PlayerClient
+import Shared
 import SwiftUI
 
+@MainActor
 class ArmedVM: ObservableObject {
-//    UI control variables
-    @Published var highPitchedPlayer = HighPitchedAudioPlayer()
+    @Dependency(\.batteryClient) private var batteryClient
+    @Dependency(\.playerClient) private var playerClient
+    @Dependency(\.cameraClient) private var cameraClient
 
     @Published var armed: Bool = false
-
-    //    UI View variables
     @Published var isConnected: Bool = false
     @Published var showFrequencyPopover: Bool = false
+    @Published var hasCameraAccess: Bool = true
 
-    private var monitor: AnyCancellable?
-    private var refreshInterval: TimeInterval = 1.0
+    @Default(.sirenTimer) private var sirenTimer
+    @Default(.siren) private var siren
 
-    @Default(.sirenTimer) var sirenTimer
-    @Default(.siren) var siren
+    private var batteryMonitorTask: Task<Void, Never>?
+    private var cameraTask: Task<Void, Never>?
+    private var cameraAccessTask: Task<Void, Never>?
+
     init() {
         startMonitoringBattery()
+        startMonitoringCameraAccess()
     }
 
     deinit {
-        stopMonitoringBattery()
-    }
-
-    func stopMonitoringBattery() {
-        monitor?.cancel()
+        Task {
+            await self.stopMonitoringBattery()
+            await self.stopCamera()
+            await self.stopMonitoringCameraAccess()
+        }
     }
 
     func startMonitoringBattery() {
-        monitor = Timer.publish(every: refreshInterval, on: .main, in: .common)
-            .autoconnect()
-            .sink { [weak self] _ in
-                self?.updateBatteryStatus()
-            }
-    }
-
-    private func updateBatteryStatus() {
-        let snapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
-        let sources = IOPSCopyPowerSourcesList(snapshot).takeRetainedValue() as Array
-        for source in sources {
-            let description = IOPSGetPowerSourceDescription(snapshot, source).takeUnretainedValue() as NSDictionary
-            let powerSourceState = description[kIOPSPowerSourceStateKey] as? String
-            isConnected = powerSourceState == kIOPSACPowerValue
-
-            if isConnected || !armed || !siren {
-                if highPitchedPlayer.isPlaying() { highPitchedPlayer.stop() }
-                return
-            }
-
-            if !isConnected && armed && !highPitchedPlayer.isPlaying() {
-                print("Playing Sound after \(sirenTimer * 30)")
-                highPitchedPlayer.play(after: sirenTimer * 30)
-                return
+        batteryMonitorTask = Task {
+            for await connected in batteryClient.batteryStatusStream {
+                self.isConnected = connected
+                await self.updateBatteryStatus(connected: connected)
             }
         }
     }
 
-    func authenticate() -> Bool {
+    func stopMonitoringBattery() {
+        batteryMonitorTask?.cancel()
+    }
+
+    private func updateBatteryStatus(connected: Bool) async {
+        if connected || !armed || !siren {
+            if playerClient.isPlaying() {
+                playerClient.stop()
+            }
+            return
+        }
+
+        if !connected && armed && !playerClient.isPlaying() {
+            print("Playing Sound after \(sirenTimer * 30)")
+            playerClient.play(after: sirenTimer * 30, again: false)
+            startCamera()
+        }
+    }
+
+    func openCameraSettings() {
+        cameraClient.openCameraSettings()
+    }
+
+    func authenticate() async -> Bool {
         let context = LAContext()
         var error: NSError?
-        var authenticated = false
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             let reason = "Unarm device"
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, _ in
+            do {
+                let success = try await context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason)
                 if success {
-                    DispatchQueue.main.async {
-                        self.armed = false
-                    }
-                    authenticated = true
+                    armed = false
+                    stopCamera()
+                    return true
                 }
+            } catch {
+                print("Authentication failed: \(error.localizedDescription)")
+                return false
             }
         }
-        return authenticated
+        return false
     }
 
-    static func isConnected() -> Bool {
-        let snapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
-        let sources = IOPSCopyPowerSourcesList(snapshot).takeRetainedValue() as Array
-        for source in sources {
-            let description = IOPSGetPowerSourceDescription(snapshot, source).takeUnretainedValue() as NSDictionary
-            let powerSourceState = description[kIOPSPowerSourceStateKey] as? String
-            return powerSourceState == kIOPSACPowerValue
+    func startCamera() {
+        cameraClient.startCamera()
+    }
+
+    func stopCamera() {
+        cameraTask?.cancel()
+        cameraClient.stopCamera()
+    }
+
+    func startMonitoringCameraAccess() {
+        cameraAccessTask = Task {
+            for await access in cameraClient.cameraAccessStream {
+                self.hasCameraAccess = access
+            }
         }
-        return false
+    }
+
+    func stopMonitoringCameraAccess() {
+        cameraAccessTask?.cancel()
     }
 }
