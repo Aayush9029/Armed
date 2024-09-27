@@ -92,7 +92,7 @@ struct ContentView: View {
     }
     
     private var menuBarInstructions: some View {
-        Text("You can click on the sheild icon, it will stay on your menu bar.")
+        Text("You can click on the sheild icon, it should be on your menu bar.")
             .foregroundStyle(.secondary)
             .font(.caption)
             .multilineTextAlignment(.center)

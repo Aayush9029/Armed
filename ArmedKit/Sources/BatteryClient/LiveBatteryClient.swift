@@ -29,7 +29,7 @@ struct LiveBatteryClient: BatteryClient {
         AsyncStream { continuation in
             Task {
                 while !Task.isCancelled {
-                    continuation.yield(!self.isConnected)
+                    continuation.yield(self.isConnected)
                     try? await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
                 }
                 continuation.finish()
