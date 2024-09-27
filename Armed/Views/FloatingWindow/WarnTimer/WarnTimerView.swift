@@ -1,6 +1,7 @@
 import Defaults
 import Dependencies
 import SwiftUI
+import UI
 
 struct WarnTimerView: View {
     @EnvironmentObject var armedVM: ArmedVM
@@ -18,7 +19,9 @@ struct WarnTimerView: View {
             if !armedVM.isConnected {
                 ZStack {
                     FlashLights()
-                    TimerView(inputTime: sirenTimer)
+                    TimerView(inputTime: sirenTimer) {
+                        _ = await armedVM.authenticate()
+                    }
                 }
                 .ignoresSafeArea()
             } else {
@@ -29,11 +32,13 @@ struct WarnTimerView: View {
                 }
                 VStack {
                     DangerOverlay(message)
+
                     if !imageBuffer.isEmpty {
                         ImageBufferRow(imageBuffer)
                     }
-                    TouchIDButton()
-                        .environmentObject(armedVM)
+                    TouchIDButton {
+                        _ = await armedVM.authenticate()
+                    }
                 }
                 .padding()
             }

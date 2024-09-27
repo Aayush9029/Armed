@@ -1,13 +1,17 @@
 import SwiftUI
 
-struct TouchIDButton: View {
-    @EnvironmentObject var armedVM: ArmedVM
+public struct TouchIDButton: View {
+    let action: () async -> Void
     @State private var isHovered = false
 
-    var body: some View {
+    public init(action: @escaping () async -> Void) {
+        self.action = action
+    }
+
+    public var body: some View {
         Button {
             Task {
-                _ = await armedVM.authenticate()
+                await action()
             }
         } label: {
             VStack {
@@ -32,7 +36,9 @@ struct TouchIDButton: View {
 }
 
 #Preview {
-    TouchIDButton()
-        .environmentObject(ArmedVM())
-        .padding()
+    TouchIDButton {
+        try? await Task.sleep(nanoseconds: 1_000_000_000)
+        print("Authentication completed")
+    }
+    .padding()
 }
