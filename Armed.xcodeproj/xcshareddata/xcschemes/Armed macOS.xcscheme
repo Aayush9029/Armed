@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1430"
+   LastUpgradeVersion = "1610"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4522AA7729E856540056D6BA"
-               BuildableName = "Armed macOS.app"
-               BlueprintName = "Armed macOS"
+               BuildableName = "Armed.app"
+               BlueprintName = "Armed"
                ReferencedContainer = "container:Armed.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4522AA7729E856540056D6BA"
-            BuildableName = "Armed macOS.app"
-            BlueprintName = "Armed macOS"
+            BuildableName = "Armed.app"
+            BlueprintName = "Armed"
             ReferencedContainer = "container:Armed.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -68,8 +68,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4522AA7729E856540056D6BA"
-            BuildableName = "Armed macOS.app"
-            BlueprintName = "Armed macOS"
+            BuildableName = "Armed.app"
+            BlueprintName = "Armed"
             ReferencedContainer = "container:Armed.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
